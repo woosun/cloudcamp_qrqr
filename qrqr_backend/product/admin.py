@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 
-@admin.register(product)
+@admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['id','uid', 'category', 'name', 'display_yn', 'query_yn' ]
     list_display_links = ['id', 'name']

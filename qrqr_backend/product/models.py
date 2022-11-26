@@ -12,7 +12,7 @@ COMPUTER_PART = (
 )
 
 #테이블생성
-class product(models.Model):
+class Product(models.Model):
     uid = models.ForeignKey(User,on_delete=models.CASCADE) #관리자중 누가 등록햇니
     category = models.CharField(choices=COMPUTER_PART, max_length=128) # 카테고리
     name = models.TextField() #상품명 필드
@@ -23,3 +23,5 @@ class product(models.Model):
     create_date = models.DateTimeField(auto_now_add=True) #작성일자
     def __str__(self):
         return "product"
+    class Meta:
+        db_table = 'qrqr_product'

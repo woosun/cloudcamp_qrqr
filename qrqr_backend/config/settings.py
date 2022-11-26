@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'product',
     'guduck',
     'user',
+    'push',
 ]
 
 MIDDLEWARE = [
