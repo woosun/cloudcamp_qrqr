@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+</head>
+<body>
+  {% extends "base.html" %}
+  {% block content %}
+    <h1>임시 메인화면</h1>
+  <br>
+    <a class="btn btn-primary" role="button" aria-disabled="true" href="{% url 'login' %}" type="">로그인 페이지로 이동</a>
+  {% endblock %}
+</body>
+</html>

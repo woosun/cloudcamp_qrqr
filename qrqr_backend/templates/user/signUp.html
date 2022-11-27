@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>회원가입</title>
 </head>
 <body>
     {% extends "base.html" %}
@@ -13,9 +13,6 @@
                 <h4>계정 생성</h4>
             </div>
 
-            <div class="col-8 text-right">
-                <span>또는 로그인 하세요</a></span>
-            </div>
         </div>
 
         <form method="POST" class="post-form" action="">
@@ -32,9 +29,9 @@
                 <label for="username">비밀번호 확인</label>
                 <input type="password" class="form-control" name="password2" id="password2" value="{{signupForm.password2.value|default_if_none:'' }}">
             </div>
-            <input type="submit" name="Submit">
+            <button type="submit" class="btn btn-primary">Submit!</button>
         </form>
-        {% endblock %}
     </div>
+    {% endblock %}
 </body>
 </html>

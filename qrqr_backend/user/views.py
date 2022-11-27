@@ -34,7 +34,7 @@ def login(request):
             auth_login(request,loginForm.get_user())
             return redirect('/list/')
         else:
-            return redirect('/list/')
+            return render(request, "main.html")
     else:
         loginForm = AuthenticationForm()
     return render(request,'user/login.html',{'loginForm':loginForm})
@@ -56,3 +56,8 @@ def edit_user_profile(request):
             profile_file.save()
             return redirect('/list/')
     return redirect('/list/')
+
+
+#임시로 만든 메인페이지
+def mainFunc(request):
+    return render(request, 'main.html')

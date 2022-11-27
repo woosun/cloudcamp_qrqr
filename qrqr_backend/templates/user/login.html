@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>회원가입</title>
 </head>
 <body>
-    {% csrf_token %}
-    {{ loginForm }}
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="container my-3">
+
+        <form method="POST" class="post-form" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">사용자 이름</label>
+                <input type="text" class="form-control" name="username" id="username" value="{{loginForm.username.value|default_if_none:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="username">비밀번호</label>
+                <input type="password" class="form-control" name="password" id="password" value="{{loginForm.password.value|default_if_none:'' }}">
+            </div>
+
+            <button type="submit" class="btn btn-primary">로그인</button>
+        </form>
+        <br>
+        <a class="btn btn-primary" role="button" aria-disabled="true" href="{% url 'signup' %}" type="">회원가입 하러가기</a>
+    </div>
+
+    {% endblock %}
 </body>
 </html>

@@ -13,7 +13,7 @@ urlpatterns = [
         #상품관리
 
     #메인페이지
-
+    path('', user.views.mainFunc),
 
     #상품 #리스트
     path('product/', product.views.list),
@@ -24,8 +24,8 @@ urlpatterns = [
 
     #회원
         # 가입
-    path('signup/', user.views.signup),
-    path('login/', user.views.login),
+    path('signup/', user.views.signup, name="signup"),
+    path('login/', user.views.login, name="login"),
     path('logout/', user.views.logout),
 
 
