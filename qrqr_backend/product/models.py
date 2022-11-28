@@ -21,6 +21,7 @@ class Product(models.Model):
     query_yn = models.BooleanField(default=False) #계속 검색할지 여부
     query_data = models.TextField() #쿼리 데이타
     create_date = models.DateTimeField(auto_now_add=True) #작성일자
+    like = models.ManyToManyField(User, related_name='likes' ,blank=True)
     def __str__(self):
         return "product"
     class Meta:
