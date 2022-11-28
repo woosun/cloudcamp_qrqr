@@ -3,20 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>main</title>
+
+  <style>
+  .top {
+    margin-top: 6px;
+  }
+  .contents{
+    width: 170px
+  }
+</style>
+
 </head>
 <body>
   {% extends "base.html" %}
   {% block content %}
-    <h1>임시 메인화면</h1>
-  <br>
-    <a class="btn btn-primary" role="button" aria-disabled="true" href="{% url 'login' %}" type="">로그인 페이지로 이동</a>
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+     <div class="col-12"><input type="button" class="btn btn-primary float-right" value="로그인 하러가기"  onclick = "location.href = '{% url 'login' %}'"></div>
+  </div>
+</nav>
 
-  <a href="/list/1">CPU</a>
-  <a href="/list/2">MAINBOARD</a>
-  <a href="/list/3">RAM</a>
-  <a href="/list/4">SSD</a>
-  <a href="/list/5">GPU</a>
-  <a href="/list/6">POWER</a>
+  <div class="row text-center">
+    <div class="col-md-12" style="margin-top: 40px">
+      <h1>임시 메인화면</h1>
+    </div>
+
+    <div class="col-md-12 top">
+      <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'login' %}" type="">cpu 보러가기</a>
+    </div>
+
+    <div class="col-md-12 top">
+      <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'login' %}" type="">메인보드 보러가기</a>
+    </div>
+
+    <div class="col-md-12 top">
+      <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'login' %}" type="">램 보러가기</a>
+    </div>
+
+    <div class="col-md-12 top">
+      <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'login' %}" type="">ssd 보러가기</a>
+    </div>
+
+    <div class="col-md-12 top">
+      <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'login' %}" type="">gpu 보러가기</a>
+    </div>
+
+    <div class="col-md-12 top">
+      <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'login' %}" type="">파워 보러가기</a>
+    </div>
+
+  </div>
   {% endblock %}
+
 </body>
 </html>
