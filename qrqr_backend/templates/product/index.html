@@ -17,6 +17,7 @@
                   <td>query_yn</td>
                   <td>query_data</td>
                   <td>create_date</td>
+                  <td>구독하기</td>
               </tr>
     {% for post in posts %}
               <tr>
@@ -28,6 +29,8 @@
                   <td>{{ post.query_yn }}</td>
                   <td>{{ post.query_data }}</td>
                   <td>{{ post.create_date }}</td>
+                  <td><input type="button" value="구독하기"></td>
+
               </tr>
     {% endfor %}
         </table>
