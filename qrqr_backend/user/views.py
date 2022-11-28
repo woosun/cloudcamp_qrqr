@@ -17,10 +17,10 @@ def signup(request):
             signupForm.save()
             username = signupForm.cleaned_data.get('username')
             raw_password = signupForm.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
+            # user = authenticate(username=username, password=raw_password)
+            # login(request, user)
             print('회원가입성공')
-            return redirect('/list/')
+            return redirect('user/login.html')
     else:
         signupForm = cSignupForm()
     return render(request,'user/signUp.html',{'signupForm':signupForm})
@@ -28,16 +28,17 @@ def signup(request):
 
 def login(request):
     print('로그인호출')
+    check = "none"
     if request.method == 'POST':
         loginForm = AuthenticationForm(request,request.POST)
         if loginForm.is_valid():
             auth_login(request,loginForm.get_user())
-            return redirect('/list/')
+            return redirect('/list/1')
         else:
-            return render(request, "main.html")
+            return render(request, "user/login.html", {'loginForm':loginForm})
     else:
         loginForm = AuthenticationForm()
-    return render(request,'user/login.html',{'loginForm':loginForm})
+    return render(request,'user/login.html',{'loginForm':loginForm, 'checkError' : check})
 def logout(request):
     print('로그아웃성공')
     auth_logout(request)
