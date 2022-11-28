@@ -16,7 +16,7 @@ urlpatterns = [
     path('', user.views.mainFunc),
 
     #상품 #리스트
-    path('product/', product.views.list),
+    path('list/<str:category>', product.views.list),
         #상세
     path('product/<str:type>', product.views.prog),
 

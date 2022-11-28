@@ -17,10 +17,10 @@ def signup(request):
             signupForm.save()
             username = signupForm.cleaned_data.get('username')
             raw_password = signupForm.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
+            # user = authenticate(username=username, password=raw_password)
+            # login(request, user)
             print('회원가입성공')
-            return redirect('/list/')
+            return redirect('user/login.html')
     else:
         signupForm = cSignupForm()
     return render(request,'user/signUp.html',{'signupForm':signupForm})
