@@ -17,42 +17,63 @@
 <body>
   {% extends "base.html" %}
   {% block content %}
-<nav class="navbar bg-light">
+<nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-     <div class="col-12"><input type="button" class="btn btn-primary float-right" value="로그인 하러가기"  onclick = "location.href = '{% url 'login' %}'"></div>
-  </div>
-</nav>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     {% if user.is_authenticated %}
+<!--       <div class="col-12"><input type="button" class="btn btn-danger float-right" value="로그아웃"  onclick = "location.href = '{% url 'logout' %}'"></div>-->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <div class="row">
+            <li class="nav-item dropdown col-md-12">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+                  </div>
+          </ul>
+     {% else %}
+      <div class="col-12"><input type="button" class="btn btn-primary float-right" value="로그인 하러가기"  onclick = "location.href = '{% url 'login' %}'"></div>
+     {% endif %}
+      </div>
+     </div>
+    </nav>
 
-  <div class="row text-center">
-    <div class="col-md-12" style="margin-top: 40px">
-      <h1>임시 메인화면</h1>
-    </div>
+      <div class="row text-center">
+        <div class="col-md-12" style="margin-top: 40px">
+          <h1>임시 메인화면</h1>
+        </div>
 
-    <div class="col-md-12 top">
-      <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'login' %}" type="">cpu 보러가기</a>
-    </div>
+        <div class="col-md-12 top">
+          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=1 %}" type="">cpu 보러가기</a>
+        </div>
 
-    <div class="col-md-12 top">
-      <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'login' %}" type="">메인보드 보러가기</a>
-    </div>
+        <div class="col-md-12 top">
+          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=2 %}" type="">메인보드 보러가기</a>
+        </div>
 
-    <div class="col-md-12 top">
-      <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'login' %}" type="">램 보러가기</a>
-    </div>
+        <div class="col-md-12 top">
+          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=3 %}" type="">램 보러가기</a>
+        </div>
 
-    <div class="col-md-12 top">
-      <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'login' %}" type="">ssd 보러가기</a>
-    </div>
+        <div class="col-md-12 top">
+          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=4 %}" type="">ssd 보러가기</a>
+        </div>
 
-    <div class="col-md-12 top">
-      <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'login' %}" type="">gpu 보러가기</a>
-    </div>
+        <div class="col-md-12 top">
+          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=5 %}" type="">gpu 보러가기</a>
+        </div>
 
-    <div class="col-md-12 top">
-      <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'login' %}" type="">파워 보러가기</a>
-    </div>
+        <div class="col-md-12 top">
+          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=6 %}" type="">파워 보러가기</a>
+        </div>
 
-  </div>
+      </div>
   {% endblock %}
 
 </body>
