@@ -3,13 +3,18 @@ from django.urls import path, include
 from django.conf import settings
 import user.views
 import product.views
-#import guduck.views
+import guduck.views
 
+app_name = 'guduck'
 urlpatterns = [
     #어드민
     path('admin/', admin.site.urls),
         #회원관리
+    path('myguduck/',guduck.views.list),
+    path('unlike/<int:pid>',guduck.views.unlike),
         #구독관리
+    path('like/<int:pid>',product.views.like),
+    #path('<int:pid>/guduck/', guduck.views.prog, name='likes'),
         #상품관리
 
     #메인페이지
