@@ -1,10 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+    {% if lists %}
+          <div>
+              <table border="1">
+                  <tr>
+                      <td>순번</td>
+                      <td>카테고리</td>
+                      <td>상품명</td>
+                      <td>이미지</td>
+                      <td>구독여부</td>
+                      <td>구독일자</td>
+                      <td>구독하기</td>
+                  </tr>
+        {% for list in lists %}
+                  <tr>
+                      <td>{{ list.id }}</td>
+                      <td>{{ list.pid.category }}</td>
+                      <td>{{ list.pid.name }}</td>
+                      <td>
+                          {% if list.pid.imgsrc %}
+                            <img src="{% get_media_prefix %}{{ list.pid.imgsrc }}" class="product_img"/>
+                          {% else %}
+                            <img src="{% get_media_prefix %}/noimage.png" class="product_img"/>
+                          {% endif %}
+                      </td>
+                      <td>{{ list.display_yn }}</td>
+                       <td>{{ list.create_date }}</td>
+                      <td>
+                          <a class="post-meta" href="/unlike/{{ list.pid.id }}">
+                              <spen id="like_count">해지하기</spen>
+                          </a>
+                      </td>
+                  </tr>
+        {% endfor %}
+            </table>
+          </div>
+    {% endif %}
 
 </body>
 </html>
+{% endblock %}

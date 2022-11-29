@@ -18,8 +18,6 @@ def prog(request, type):
 # 리스트함수 게시판명별로 정렬추가
 def list(request,category):
     posts = Product.objects.filter(category=category).order_by('-id')
-
-
     return render(request, 'product/index.html',
                   {'posts': posts, 'request': request})
 
@@ -32,11 +30,11 @@ def like(request,pid):
         #구독 삭제
         guduck_fc(request.user.id,pid,"remove")
         post.like.remove(user)
-        return JsonResponse({'message': 'deleted', 'like_cnt' : post.like.count() })
     else:
         guduck_fc(request.user.id, pid, "add")
         post.like.add(user) # post의 like에 현재유저의 정보를 넘김
-        return JsonResponse({'message': 'added', 'like_cnt' : post.like.count()})
+
+    return redirect('/list/'+post.category)
 
 
 def guduck_fc(uid,pid,type):

@@ -10,6 +10,8 @@ urlpatterns = [
     #어드민
     path('admin/', admin.site.urls),
         #회원관리
+    path('myguduck/',guduck.views.list),
+    path('unlike/<int:pid>',guduck.views.unlike),
         #구독관리
     path('like/<int:pid>',product.views.like),
     #path('<int:pid>/guduck/', guduck.views.prog, name='likes'),
