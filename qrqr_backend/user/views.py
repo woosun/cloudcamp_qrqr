@@ -53,8 +53,8 @@ def edit_user_profile(request):
             if request.FILES:  # 파일 업로드 여부 체크
                 profile_file.imgfile = request.FILES['imgfile']  # 들어온 파일들중에 이름이 imgsrc인 녀석을 대입시켜준다
                 # 원래는 이미지 확인하는 소스를 만들어야 하지만 테스트 이므로 그냥 한다.
-            profile_file.writer = request.user
-            profile_file.save()
+                profile_file.writer = request.user
+                profile_file.save()
             return redirect('/list/')
     return redirect('/list/')
 
