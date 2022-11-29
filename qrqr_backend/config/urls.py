@@ -16,7 +16,7 @@ urlpatterns = [
     path('', user.views.mainFunc),
 
     #상품 #리스트
-    path('list/<str:category>', product.views.list),
+    path('list/<str:category>', product.views.list, name="list"),
         #상세
     path('product/<str:type>', product.views.prog),
 
@@ -26,7 +26,7 @@ urlpatterns = [
         # 가입
     path('signup/', user.views.signup, name="signup"),
     path('login/', user.views.login, name="login"),
-    path('logout/', user.views.logout),
+    path('logout/', user.views.logout, name="logout"),
 
 
 
