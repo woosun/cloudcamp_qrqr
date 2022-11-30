@@ -1,40 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-{% if posts %}
-      <div>
-          <table border="1">
-              <tr>
-                  <td>id</td>
-                  <td>category</td>
-                  <td>name</td>
-                  <td>imgsrc</td>
-                  <td>display_yn</td>
-                  <td>query_yn</td>
-                  <td>query_data</td>
-                  <td>create_date</td>
-                  <td>구독하기</td>
-              </tr>
-    {% for post in posts %}
-              <tr>
-                  <td>{{ post.id }}</td>
-                  <td>{{ post.category }}</td>
-                  <td>{{ post.name }}</td>
-                  <td>{{ post.imgsrc }}</td>
-                  <td>{{ post.display_yn }}</td>
-                  <td>{{ post.query_yn }}</td>
-                  <td>{{ post.query_data }}</td>
-                  <td>{{ post.create_date }}</td>
-                  <td><input type="button" value="구독하기"></td>
+    {% if posts %}
+          <div>
+              <table border="1">
+                  <tr>
+                      <td>id</td>
+                      <td>category</td>
+                      <td>name</td>
+                      <td>imgsrc</td>
+                      <td>display_yn</td>
+                      <td>query_yn</td>
+                      <td>query_data</td>
+                      <td>create_date</td>
+                      <td>구독하기</td>
+                  </tr>
+        {% for post in posts %}
+                  <tr>
+                      <td>{{ post.id }}</td>
+                      <td>{{ post.category }}</td>
+                      <td>{{ post.name }}</td>
+                      <td>
+                          {% if post.imgsrc %}
+                            <img src="{% get_media_prefix %}{{ post.imgsrc }}" class="product_img"/>
+                          {% else %}
+                            <img src="{% get_media_prefix %}/noimage.png" class="product_img"/>
+                          {% endif %}
+                      </td>
+                      <td>{{ post.display_yn }}</td>
+                      <td>{{ post.query_yn }}</td>
+                      <td>{{ post.query_data }}</td>
+                      <td>{{ post.create_date }}</td>
+                      <td><a class="post-meta" href="/like/{{ post.id }}">
+                                {% if request.user in post.like.all %}
+                                <spen id="like_count">{{ post.like.count }}</spen>
+                                {% else %}
+                                <spen id="like_count">{{ post.like.count }}</spen>
+                                {% endif %}
+                            </a>
+                      </td>
 
-              </tr>
-    {% endfor %}
-        </table>
-      </div>
-{% endif %}
+                  </tr>
+        {% endfor %}
+            </table>
+          </div>
+    {% endif %}
+
 </body>
 </html>
+<script>
+    function sendRequest(bid) {
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.onreadystatechange = function() {
+				if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200 ) {
+					console.log(aa.like_cnt)
+				}
+			};
+			// GET 방식으로 요청을 보내면서 데이터를 동시에 전달함.
+			httpRequest.open("GET", "/like/"+bid, true);
+			httpRequest.send();
+		}
+</script>
+{% endblock %}
