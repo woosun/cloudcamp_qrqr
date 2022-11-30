@@ -33,7 +33,7 @@ def login(request):
         loginForm = AuthenticationForm(request,request.POST)
         if loginForm.is_valid():
             auth_login(request,loginForm.get_user())
-            return redirect('/list/1')
+            return redirect('/')
         else:
             return render(request, "user/login.html", {'loginForm':loginForm})
     else:
@@ -42,7 +42,7 @@ def login(request):
 def logout(request):
     print('로그아웃성공')
     auth_logout(request)
-    return redirect('/list/')
+    return redirect('/')
 
 @login_required(login_url='login') #사용자 프로필 수정이므로 로그인여부확인
 def edit_user_profile(request):

@@ -10,6 +10,8 @@ urlpatterns = [
     #어드민
     path('admin/', admin.site.urls),
         #회원관리
+    path('myguduck/',guduck.views.list),
+    path('unlike/<int:pid>',guduck.views.unlike),
         #구독관리
     path('like/<int:pid>',product.views.like),
     #path('<int:pid>/guduck/', guduck.views.prog, name='likes'),
@@ -19,7 +21,7 @@ urlpatterns = [
     path('', user.views.mainFunc),
 
     #상품 #리스트
-    path('list/<str:category>', product.views.list),
+    path('list/<str:category>', product.views.list, name="list"),
         #상세
     path('product/<str:type>', product.views.prog),
 
@@ -29,7 +31,7 @@ urlpatterns = [
         # 가입
     path('signup/', user.views.signup, name="signup"),
     path('login/', user.views.login, name="login"),
-    path('logout/', user.views.logout),
+    path('logout/', user.views.logout, name="logout"),
 
 
 

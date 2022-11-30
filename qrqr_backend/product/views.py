@@ -9,17 +9,15 @@ from guduck.models import guduck
 from django.db.models import Q
 from django.http import JsonResponse
 
-@login_required(login_url='login') #게시글 작성 및 수정 삭제 모두 list 페이지에서 이루어 지므로 모두 list페이지로 보낸다.
+@login_required(login_url='/login') #게시글 작성 및 수정 삭제 모두 list 페이지에서 이루어 지므로 모두 list페이지로 보낸다.
 def prog(request, type):
     print("타입없음에러")
     return render(request, 'index.html')
 
-
 # 리스트함수 게시판명별로 정렬추가
+@login_required(login_url='/login')
 def list(request,category):
     posts = Product.objects.filter(category=category).order_by('-id')
-
-
     return render(request, 'product/index.html',
                   {'posts': posts, 'request': request})
 
@@ -32,11 +30,11 @@ def like(request,pid):
         #구독 삭제
         guduck_fc(request.user.id,pid,"remove")
         post.like.remove(user)
-        return JsonResponse({'message': 'deleted', 'like_cnt' : post.like.count() })
     else:
         guduck_fc(request.user.id, pid, "add")
         post.like.add(user) # post의 like에 현재유저의 정보를 넘김
-        return JsonResponse({'message': 'added', 'like_cnt' : post.like.count()})
+
+    return redirect('/list/'+post.category)
 
 
 def guduck_fc(uid,pid,type):
