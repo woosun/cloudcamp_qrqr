@@ -12,7 +12,6 @@ def prog(request, type):
     return render(request, 'index.html')
 
 # 리스트함수 게시판명별로 정렬추가
-@login_required(login_url='/login')
 def list(request,category):
     print(category)
     posts = Product.objects.filter(category=category).order_by('-id')
