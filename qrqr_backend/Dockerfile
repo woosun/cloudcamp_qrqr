@@ -1,6 +1,6 @@
 FROM python:3.9.15
 ADD ./ /app
-COPY /volume1/SSD_DATA/secret.json /app/secret.json
+COPY /SSD_DATA/secret.json /app/
 WORKDIR /app
 RUN pip install -r requirements.txt
 EXPOSE 8000
