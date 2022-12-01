@@ -1,5 +1,4 @@
 #!/bin/bash
-
 cd /app/qrqr_backend
 pip install django pymysql gunicorn Pillow
 mv /app/secret.json /app/qrqr_backend/secret.json
