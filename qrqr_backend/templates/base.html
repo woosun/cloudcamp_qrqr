@@ -13,8 +13,6 @@
   <title>base</title>
 </head>
 <body>
-
-  {% block content %}
      {% if user.is_authenticated %}
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
@@ -50,6 +48,7 @@
             <button class="btn btn-primary ms-auto ms-md-0 me-3 me-lg-4" style="text-align:center;" onclick = "location.href = '{% url 'login' %}'"> 로그인 하러가기 </button>
         </nav>
       {% endif %}
+  {% block content %}
   {% endblock %}
 </body>
 </html>
