@@ -35,7 +35,7 @@
                         <li><a class="dropdown-item" href="#!">마이페이지</a></li>
                         <li><a class="dropdown-item" href="#!">나의 구독</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <button class="btn btn-danger" style="text-align:center; width:100%" onclick = "location.href = '{% url 'login' %}'"> 로그아웃 </button>
+                        <button class="btn btn-danger" style="text-align:center; width:100%" onclick = "location.href = '{% url 'logout' %}'"> 로그아웃 </button>
                     </ul>
                 </li>
             </ul>
@@ -58,32 +58,32 @@
 
 
 
-      <div class="row text-center">
+      <div class="row text-center" >
         <div class="col-md-12" style="margin-top: 40px">
           <h1>임시 메인화면</h1>
         </div>
 
-        <div class="col-md-12 top">
+        <div class="col-md-12 " style="margin-top: 5px">
           <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=1 %}" type="">cpu 보러가기</a>
         </div>
 
-        <div class="col-md-12 top">
+        <div class="col-md-12" style="margin-top: 5px">
           <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=2 %}" type="">메인보드 보러가기</a>
         </div>
 
-        <div class="col-md-12 top">
+        <div class="col-md-12 " style="margin-top: 5px">
           <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=3 %}" type="">램 보러가기</a>
         </div>
 
-        <div class="col-md-12 top">
+        <div class="col-md-12 " style="margin-top: 5px">
           <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=4 %}" type="">ssd 보러가기</a>
         </div>
 
-        <div class="col-md-12 top">
+        <div class="col-md-12 " style="margin-top: 5px">
           <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=5 %}" type="">gpu 보러가기</a>
         </div>
 
-        <div class="col-md-12 top">
+        <div class="col-md-12 " style="margin-top: 5px">
           <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=6 %}" type="">파워 보러가기</a>
         </div>
 
