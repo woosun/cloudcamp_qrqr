@@ -11,7 +11,7 @@ LOGIN_REDIRECT_URL = 'index.html'
 BASE_DIR = Path(__file__).resolve().parent.parent
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-secret_file = os.path.join(BASE_DIR, 'scret.json')
+secret_file = os.path.join(BASE_DIR, 'secret.json')
 
 with open(secret_file) as f:
     secrets = json.loads(f.read())
