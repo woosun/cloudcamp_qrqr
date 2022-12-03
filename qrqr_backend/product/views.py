@@ -3,6 +3,11 @@ from product.models import Product
 from django.contrib.auth.decorators import login_required
 from guduck.models import guduck
 from django.core.paginator import Paginator
+import influxdb_client
+bucket = "qrqr"
+org = "qrqr"
+token = "DJFvAGHanKa1AUci8PLbzrhm1UPjayh5Re5ulyFCvx4BVVt8JQVi0rdw0jiwPHAlKLAq1l4N-4DcZR0i8oun2w=="
+url="http://oud.kr:8086"
 @login_required(login_url='/login') #게시글 작성 및 수정 삭제 모두 list 페이지에서 이루어 지므로 모두 list페이지로 보낸다.
 def prog(request, type):
     print("타입없음에러")
@@ -14,14 +19,39 @@ def list(request,category):
     # board_list 페이징 처리
     page = request.GET.get('page', '1')  # GET 방식으로 정보를 받아오는 데이터
     paginator = Paginator(board_list, '3')  # Paginator(분할될 객체, 페이지 당 담길 객체수)
-
     if int(page) > int(paginator.num_pages) :
         page = paginator.num_pages # 호출한 페이지가 총페이지보다 크면 마지막페이지 이동
-
     posts = paginator.page(page)  # 페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
     posts.in_page = page
-
     posts.category = category
+
+
+    #influxdb 연습
+    client = influxdb_client.InfluxDBClient(url=url,token=token,org=org)
+    query_api = client.query_api()
+
+    #현재가 뽑아오는녀석
+    tables= query_api.query('''
+        from(bucket:"qrqr")
+        |> range(start: -1000m)
+        |> filter(fn: (r) => r["_measurement"] == "dragon_nest" and r["CPU"] == "1" and r["pid"] == "7")
+        |> last()
+    ''')
+    for table in tables:
+        for record in table.records:
+            print(record.values)
+    #최저가 뽑아오는녀석 기간은 365일동안...
+    tables = query_api.query('''
+        from(bucket:"qrqr")
+        |> range(start: -365d, stop: now())
+        |> filter(fn: (r) => r["_measurement"] == "dragon_nest" and r["CPU"] == "1" and r["pid"] == "7")
+        |> sort(columns: ["_value"])
+        |> limit(n:1)
+       ''')
+    for table in tables:
+        for record in table.records:
+            print(record.values)
+
     return render(request, 'product/index.html',
                   {'posts': posts, 'request': request})
 
