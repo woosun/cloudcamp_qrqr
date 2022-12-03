@@ -61,9 +61,9 @@
                       <td>{{ post.name }}</td>
                       <td>
                           {% if post.imgsrc %}
-                            <img src="{% get_media_prefix %}{{ post.imgsrc }}" class="product_img"/>
+                            <img src="{% get_media_prefix %}{{ post.imgsrc }}" class="img-fluid"/>
                           {% else %}
-                            <img src="{% get_media_prefix %}/noimage.png" class="product_img"/>
+                            <img src="{% get_media_prefix %}/noimage.png" class="img-fluid"/>
                           {% endif %}
                       </td>
                       <td>{{ post.display_yn }}</td>
