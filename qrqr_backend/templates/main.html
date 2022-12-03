@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+
 {% extends "base.html" %}
 {% block content %}
 {% if user.is_authenticated %}
@@ -83,6 +84,7 @@
                 </div>
                 <div class="dragon-ball__btm-shadow"></div>
             </div>
+
         </div>
 
         <div class="col-md-2" style="width:200px; height:200px; border: solid 1px red">
@@ -152,6 +154,7 @@
           <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=6 %}" type="">파워 보러가기</a>
         </div>
       </div>
+
     {% load static %}
    <script src="{% static 'app.js' %}"></script>
   {% endblock %}
@@ -164,5 +167,6 @@
 
 
 {% endblock %}
+
 </body>
 </html>
