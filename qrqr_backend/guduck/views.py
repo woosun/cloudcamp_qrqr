@@ -16,7 +16,9 @@ def list(request):
         page = paginator.num_pages # 호출한 페이지가 총페이지보다 크면 마지막페이지 이동
     lists = paginator.page(page)  # 페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
     lists.in_page = page
-    return render(request, 'guduck/index.html', {'lists': lists, 'request': request})
+
+    list_for_random = range(25, 75)
+    return render(request, 'guduck/index.html', {'lists': lists, 'request': request, 'list_for_random': list_for_random})
 
 @login_required(login_url='login') #나의 구독리스트 이므로 로그인여부 체크
 def unlike(request,pid):
