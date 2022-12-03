@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>나의 드래곤볼</title>
+    {% include "base.html" %}
 </head>
 <body>
+    {% include "top.html" %}
+{% load static %}
+{% block content %}
     {% if lists %}
           <div>
-              <table border="1">
+              <table  class="table">
+                  <thead>
                   <tr>
-                      <td>순번</td>
-                      <td>카테고리</td>
-                      <td>상품명</td>
-                      <td>이미지</td>
-                      <td>구독여부</td>
-                      <td>구독일자</td>
-                      <td>구독하기</td>
-                  </tr>
+                      <th scope="col">순번</th>
+                      <th scope="col">카테고리</th>
+                      <th scope="col">상품명</th>
+                      <th scope="col">이미지</th>
+                      <th scope="col">구독일자</th>
+                      <th scope="col">해지하기</th>
+                   </tr>
+                  </thead>
         {% for list in lists %}
                   <tr>
                       <td>{{ list.id }}</td>
@@ -32,7 +34,6 @@
                             <img src="{% get_media_prefix %}/noimage.png" class="product_img"/>
                           {% endif %}
                       </td>
-                      <td>{{ list.display_yn }}</td>
                        <td>{{ list.create_date }}</td>
                       <td>
                           <a class="post-meta" href="/unlike/{{ list.pid.id }}">
@@ -43,6 +44,8 @@
         {% endfor %}
             </table>
           </div>
+    {% else %}
+    <h1 class="display-6"> 구독내역이 없습니다. </h1>
     {% endif %}
 
 </body>
