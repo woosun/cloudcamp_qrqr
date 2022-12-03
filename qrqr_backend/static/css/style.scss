@@ -1,0 +1,139 @@
+body{
+  background: #215295;
+}
+
+.canvas{
+  position: relative;
+  height: 400px;
+  width: 600px;
+  // border: black solid 2px;
+  margin: auto;
+  margin-top: 15%;
+}
+
+.radar{
+  position: absolute;
+  height: 75%;
+  width: 50%;
+  border-radius: 50%;
+  background: green;
+  border: gray solid 10px;
+  top: 15%;
+  left: 25%;
+  background-size: 20px 20px;
+  background-image: linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px);
+  
+  &:after{
+    position: absolute;
+    content: '';
+    height: 10%;
+    width: 15%;
+    background: gray;
+    border-radius:  50% 50% 0 0;
+    top: -10%;
+    left: 42.5%;
+  }
+}
+
+@mixin arrow{
+  position: absolute;
+  height: 8%;
+  width: 10%;
+  background: red;
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+ .up{
+  @include arrow;
+   left: 45.5%;
+   top: 17%;
+}
+
+ .down{
+  @include arrow;
+   left: 45.5%;
+   bottom: 17%;
+   transform: rotate(180deg);
+}
+
+ .left{
+  @include arrow;
+   left: 16%;
+   top: 46%;
+   transform: rotate(-90deg);
+}
+
+ .right{
+  @include arrow;
+   right: 16%;
+   top: 46%;
+   transform: rotate(90deg);
+}
+
+@mixin ball{
+  position: absolute;
+  height: 5%;
+  width: 5%;
+  background: orange;
+  border-radius: 50%;
+  animation: blink 1s infinite;
+  filter: blur(2px);
+}
+
+.ball-1{
+  @include ball;
+  top: 22.5%;
+  left: 22.5%;
+}
+
+.ball-2{
+  @include ball;
+  bottom: 22.5%;
+  right: 22.5%;
+}
+
+.ball-3{
+  @include ball;
+  top: 39%;
+  right: 38.5%;
+}
+ 
+.ball-4{
+  @include ball;
+  top: 32%;
+  right: 99%;
+}
+
+
+.ball-5{
+  @include ball;
+  top: 77%;
+  right: 56.5%;
+}
+
+
+.ball-6{
+  @include ball;
+  top: 21%;
+  right: 89.5%;
+}
+
+
+@keyframes blink {
+  0%{
+   opacity: 0; 
+  }
+  
+  100%{
+    opacity: 1;
+  }
+}
+
+@media all and (max-width:600px){
+  .canvas{
+    height: 300px;
+    width: 450px;
+    margin-top: 30%;
+  }
+}
