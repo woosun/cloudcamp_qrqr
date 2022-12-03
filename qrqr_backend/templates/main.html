@@ -5,14 +5,17 @@
     <title>main</title>
     <link rel="stylesheet" href="/static/dragonball.css">
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 </head>
 <body>
 {% extends "base.html" %}
 {% block content %}
 {% if user.is_authenticated %}
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #ffda84;">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html">찾아라 드래곤볼</a>
+    <a class="navbar-brand ps-3 nav-font" href="index.html" style="color: #68c415;">찾아라 드래곤볼</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
             class="fas fa-bars"></i></button>
@@ -56,13 +59,15 @@
 
 
 <div class="main-text-center text-center  "
-     style="margin-top: 6rem; border: solid 1px green">
+     style="margin-top: 6rem;">
 
-    <div class="row wrapper d-flex justify-content-between" style="border: solid 1px red">
-        <div class="col-md-2" style="width:200px; height:200px; border: solid 1px red">
+    <div class="row wrapper d-flex justify-content-between" style="">
+        <div class="col-md-2" style="width:200px; height:200px;">
             <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
                 <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=1 %}" type=""
-                   style="position: absolute; z-index: 9999;">cpu 보러가기</a>
+                   style="">
+                    <img class="img-dragonball-cpu" src="static/img/img-dragonball-cpu.png" style="">
+                    cpu 보러가기</a>
                 <div class="dragon-ball__oval-shadow"></div>
                 <div class="dragon-ball__1star-container">
                     <div class="star star__top-left"></div>
@@ -72,10 +77,12 @@
         </div>
 
 
-        <div class="col-md-2" style="width:200px; height:200px; border: solid 1px red">
+        	<div class="col-md-2" style="width:200px; height:200px;">
             <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
                 <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=2 %}" type=""
-                   style="position: absolute; z-index: 9999;">램 보러가기</a>
+                   style="">
+                    <img class="img-dragonball-ram" src="static/img/img-dragonball-ram.png" style="">
+                    램 보러가기</a>
                 <div class="dragon-ball__oval-shadow"></div>
                 <div class="dragon-ball__2star-container">
                     <div class="star star__top-left"></div>
@@ -85,10 +92,14 @@
             </div>
         </div>
 
-        <div class="col-md-2" style="width:200px; height:200px; border: solid 1px red">
+
+        <div class="col-md-2" style="width:200px; height:200px;">
             <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
                 <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=3 %}" type=""
-                   style="position: absolute; z-index: 9999;">메인보드 보러가기</a>
+                   style="position: absolute; z-index: 9999;">
+                    <img class="img-dragonball-mainboard" src="static/img/img-dragonball-mainboard.png" style="">
+                    메인보드 보러가기
+                </a>
                 <div class="dragon-ball__oval-shadow"></div>
                 <div class="dragon-ball__3star-container">
                     <div class="star star__top-left"></div>
@@ -99,10 +110,13 @@
             </div>
         </div>
 
-        <div class="col-md-2" style="width:200px; height:200px; border: solid 1px red">
+        <div class="col-md-2" style="width:200px; height:200px;">
             <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
                 <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=4 %}" type=""
-                   style="position: absolute; z-index: 9999;">SSD 보러가기</a>
+                   style="position: absolute; z-index: 9999;">
+                    <img class="img-dragonball-ssd" src="static/img/img-dragonball-ssd.png" style="">
+                    SSD 보러가기
+                </a>
                 <div class="dragon-ball__oval-shadow"></div>
                 <div class="dragon-ball__4star-container">
                     <div class="star star__top-left"></div>
@@ -114,10 +128,13 @@
             </div>
         </div>
 
-        <div class="col-md-2" style="width:200px; height:200px; border: solid 1px red">
+        <div class="col-md-2" style="width:200px; height:200px;">
             <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
                 <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=5 %}" type=""
-                   style="position: absolute; z-index: 9999;">GPU 보러가기</a>
+                   style="position: absolute; z-index: 9999;">
+                    <img class="img-dragonball-gpu" src="static/img/img-dragonball-gpu.png" style="">
+                    GPU 보러가기
+                </a>
                 <div class="dragon-ball__oval-shadow"></div>
                 <div class="dragon-ball__5star-container">
                     <div class="star star__top-left"></div>
@@ -130,10 +147,13 @@
             </div>
         </div>
 
-        <div class="col-md-2" style="width:200px; height:200px; border: solid 1px red">
+        <div class="col-md-2" style="width:200px; height:200px;">
             <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
                 <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=6 %}" type=""
-                   style="position: absolute; z-index: 9999;">파워 보러가기</a>
+                   style="position: absolute; z-index: 9999;">
+                <img class="img-dragonball-power" src="static/img/img-dragonball-power.png" style="">
+                    파워 보러가기
+                </a>
                 <div class="dragon-ball__oval-shadow"></div>
                 <div class="dragon-ball__6star-container">
                     <div class="star star__top-left"></div>
@@ -148,21 +168,13 @@
         </div>
 
 
-        <div class="col-md-12 " style="margin-top: 5px">
-          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=6 %}" type="">파워 보러가기</a>
-        </div>
-      </div>
-    {% load static %}
-   <script src="{% static 'app.js' %}"></script>
-  {% endblock %}
 
-
-    </div>
+    {% endblock %}
+</div>
 
 
 </div>
 
 
-{% endblock %}
 </body>
 </html>
