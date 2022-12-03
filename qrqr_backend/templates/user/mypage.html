@@ -39,8 +39,9 @@
     <!--구독 상품 위치 추척기-->
     <h1>구독상품 위치추적기</h1>
     {% if stars %}
-    <a href="/myguduck/?page=1">
+
     <div class="canvas">
+        <a href="/myguduck/?page=1">
         <div class="radar">
             <div class="up"></div>
             <div class="down"></div>
@@ -50,8 +51,9 @@
                 <div class="ball-1" style="top: {{ stars.random | random }}%; left: {{ stars.random | random }}%"></div>
         {% endfor %}
         </div>
+        </a>
     </div>
-    </a>
+
     {% else %}
     <h1 class="display-6"> 구독내역이 없습니다. </h1>
     {% endif %}

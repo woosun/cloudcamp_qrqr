@@ -4,64 +4,15 @@
     <meta charset="UTF-8">
     <title>main</title>
     <link rel="stylesheet" href="/static/dragonball.css">
-
     <link rel="stylesheet" href="/static/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
     {% include "base.html" %}
 </head>
 <body>
 {% include "top.html" %}
-{% if user.is_authenticated %}
-<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #ffda84;">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3 nav-font" href="index.html" style="color: #68c415;">찾아라 드래곤볼</a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-            class="fas fa-bars"></i></button>
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-    </form>
-    <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-               aria-expanded="false" style="font-size:17px"><strong>{{user.username}}</strong>&nbsp&nbsp</a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">마이페이지</a></li>
-                <li><a class="dropdown-item" href="#!">나의 구독</a></li>
-                <li>
-                    <hr class="dropdown-divider"/>
-                </li>
-                <button class="btn btn-danger" style="text-align:center; width:100%"
-                        onclick="location.href = '{% url 'logout' %}'"> 로그아웃
-                </button>
-            </ul>
-        </li>
-    </ul>
-</nav>
-{% else %}
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html">찾아라 드래곤볼</a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="" href="#!"><i class="fas fa-bars"></i>
-    </button>
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-    </form>
-    <!-- Navbar-->
-    <button class="btn btn-primary ms-auto ms-md-0 me-3 me-lg-4" style="text-align:center;"
-            onclick="location.href = '{% url 'login' %}'"> 로그인 하러가기
-    </button>
-</nav>
-{% endif %}
-
-
+{% load static %}
+{% block content %}
 <div class="main-text-center text-center  "
      style="margin-top: 6rem;">
-
     <div class="row wrapper d-flex justify-content-between" style="">
         <div class="col-md-2" style="width:200px; height:200px;">
 
@@ -172,8 +123,8 @@
                 <div class="dragon-ball__btm-shadow"></div>
             </div>
         </div>
+    </div>
+</div>
     {% endblock %}
-</div>
-</div>
 </body>
 </html>
