@@ -69,8 +69,8 @@
                       <td>{{ post.display_yn }}</td>
                       <td>{{ post.query_yn }}</td>
                       <td>{{ post.query_data }}</td>
-                      <td>{{ post.price }}</td>
-                      <td>{{ post.Low_price }}</td>
+                      <td>{{ post.price|intcomma }}</td>
+                      <td>{{ post.Low_price|intcomma  }}</td>
                       <td><a class="post-meta" href="/like/{{ post.id }}?page={{ posts.in_page }}">
                                 {% if request.user in post.like.all %}
                                 <spen id="like_count">{{ post.like.count }}</spen>
