@@ -6,7 +6,6 @@ from django.core.paginator import Paginator
 # 리스트가 불러옴
 @login_required(login_url='login') #나의 구독리스트 이므로 로그인여부 체크
 def list(request):
-
     g_lists = guduck.objects.filter(uid_id = request.user.id,read_yn=1).order_by('-id')
     # board_list 페이징 처리
     page = request.GET.get('page', '1')  # GET 방식으로 정보를 받아오는 데이터
