@@ -1,12 +1,12 @@
 .login-bg{
 /* fallback for old browsers */
-background: #6a11cb;
+background: #81f22a;
 
 /* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+background: -webkit-linear-gradient(to right, rgba(110, 203, 17, 1), rgba(88, 203, 17, 1));
 
 /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+background: linear-gradient(to right, rgba(110, 203, 17, 1), rgba(88, 203, 17, 1))
 }
 
 .scroll-none::-webkit-scrollbar {
@@ -14,4 +14,35 @@ background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 
 }
 .scroll-none{
 scroll: no;
+}
+
+.login-font{
+  color: #f77625;
+}
+
+.text-center{
+    background-color: #ffb700;
+    border-radius: 1rem;
+    border: none;
+  }
+
+.text-orange-50{
+    color: rgb(197, 93, 14)
+}
+
+.text-uppercase{
+    color: white;
+}
+
+.signup-label{
+    color: #f77625;
+}
+
+.main-text-center{
+    background-color:white;
+}
+
+.main-btn-margin{
+    margin-left: 1rem;
+    margin-right: 1rem;
 }

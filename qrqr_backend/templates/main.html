@@ -3,16 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>main</title>
-
-  <style>
-  .top {
-    margin-top: 6px;
-  }
-  .contents{
-    width: 170px
-  }
-</style>
-
+    <link rel="stylesheet" href="/static/dragonball.css">
+    {% include "base.html" %}
 </head>
 <body>
   {% extends "base.html" %}
@@ -20,35 +12,86 @@
 
       <div class="row text-center" >
         <div class="col-md-12" style="margin-top: 40px">
-          <h1>임시 테스트 메인화면</h1>
+          <h1>임시 메인화면</h1>
         </div>
 
-        <div class="col-md-12 " style="margin-top: 5px">
-          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=1 %}" type="">cpu 보러가기</a>
+
+        <div class="col-md-2" style="width:200px; height:200px; border: solid 1px red">
+            <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
+                <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=2 %}?page=1" type=""
+                   style="position: absolute; z-index: 9999;">램 보러가기</a>
+                <div class="dragon-ball__oval-shadow"></div>
+                <div class="dragon-ball__2star-container">
+                    <div class="star star__top-left"></div>
+                    <div class="star star__top-right"></div>
+                </div>
+                <div class="dragon-ball__btm-shadow"></div>
+            </div>
+
         </div>
 
-        <div class="col-md-12" style="margin-top: 5px">
-          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=2 %}" type="">메인보드 보러가기</a>
+        <div class="col-md-2" style="width:200px; height:200px; border: solid 1px red">
+            <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
+                <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=3 %}?page=1" type=""
+                   style="position: absolute; z-index: 9999;">메인보드 보러가기</a>
+                <div class="dragon-ball__oval-shadow"></div>
+                <div class="dragon-ball__3star-container">
+                    <div class="star star__top-left"></div>
+                    <div class="star star__top-right"></div>
+                    <div class="star star__btm-right" style="bottom: 11px; right: -12px;"></div>
+                </div>
+                <div class="dragon-ball__btm-shadow"></div>
+            </div>
         </div>
 
-        <div class="col-md-12 " style="margin-top: 5px">
-          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=3 %}" type="">램 보러가기</a>
+        <div class="col-md-2" style="width:200px; height:200px; border: solid 1px red">
+            <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
+                <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=4 %}?page=1" type=""
+                   style="position: absolute; z-index: 9999;">SSD 보러가기</a>
+                <div class="dragon-ball__oval-shadow"></div>
+                <div class="dragon-ball__4star-container">
+                    <div class="star star__top-left"></div>
+                    <div class="star star__top-right"></div>
+                    <div class="star star__btm-right"></div>
+                    <div class="star star__btm-left"></div>
+                </div>
+                <div class="dragon-ball__btm-shadow"></div>
+            </div>
         </div>
-
-        <div class="col-md-12 " style="margin-top: 5px">
-          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=4 %}" type="">ssd 보러가기</a>
+        <div class="col-md-2" style="width:200px; height:200px; border: solid 1px red">
+            <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
+                <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=5 %}?page=1" type=""
+                   style="position: absolute; z-index: 9999;">GPU 보러가기</a>
+                <div class="dragon-ball__oval-shadow"></div>
+                <div class="dragon-ball__5star-container">
+                    <div class="star star__top-left"></div>
+                    <div class="star star__top-right"></div>
+                    <div class="star star__btm-right"></div>
+                    <div class="star star__btm-left"></div>
+                    <div class="star star__btm-left5"></div>
+                </div>
+                <div class="dragon-ball__btm-shadow"></div>
+            </div>
         </div>
-
-        <div class="col-md-12 " style="margin-top: 5px">
-          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=5 %}" type="">gpu 보러가기</a>
+        <div class="col-md-2" style="width:200px; height:200px; border: solid 1px red">
+            <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
+                <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=6 %}?page=1" type=""
+                   style="position: absolute; z-index: 9999;">파워 보러가기</a>
+                <div class="dragon-ball__oval-shadow"></div>
+                <div class="dragon-ball__6star-container">
+                    <div class="star star__top-left"></div>
+                    <div class="star star__top-right"></div>
+                    <div class="star star__btm-right"></div>
+                    <div class="star star__btm-right6"></div>
+                    <div class="star star__btm-left"></div>
+                    <div class="star star__btm-left6"></div>
+                </div>
+                <div class="dragon-ball__btm-shadow"></div>
+            </div>
         </div>
-
-        <div class="col-md-12 " style="margin-top: 5px">
-          <a class="btn btn-primary contents" role="button" aria-disabled="true" href="{% url 'list' category=6 %}" type="">파워 보러가기</a>
-        </div>
-
       </div>
-  {% endblock %}
-
+    </div>
+</div>
+{% endblock %}
 </body>
 </html>

@@ -42,6 +42,4 @@ urlpatterns = [
  #   path('guduck/prog/<str:type>', product.views.prog),
 
 
-
-
 ]
