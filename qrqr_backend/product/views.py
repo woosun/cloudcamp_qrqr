@@ -24,36 +24,38 @@ def list(request,category):
     posts = paginator.page(page)  # 페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
     posts.in_page = page
     posts.category = category
-
-
-    #influxdb 연습
-    client = influxdb_client.InfluxDBClient(url=url,token=token,org=org)
-    query_api = client.query_api()
-
-    #현재가 뽑아오는녀석
-    tables= query_api.query('''
-        from(bucket:"qrqr")
-        |> range(start: -1000m)
-        |> filter(fn: (r) => r["_measurement"] == "dragon_nest" and r["CPU"] == "1" and r["pid"] == "7")
-        |> last()
-    ''')
-    for table in tables:
-        for record in table.records:
-            print(record.values)
-    #최저가 뽑아오는녀석 기간은 365일동안...
-    tables = query_api.query('''
-        from(bucket:"qrqr")
-        |> range(start: -365d, stop: now())
-        |> filter(fn: (r) => r["_measurement"] == "dragon_nest" and r["CPU"] == "1" and r["pid"] == "7")
-        |> sort(columns: ["_value"])
-        |> limit(n:1)
-       ''')
-    for table in tables:
-        for record in table.records:
-            print(record.values)
+    #현재가 최저가 추출
+    for post in posts:
+        post.Low_price = get_product_val(post.id,'low')
+        post.price = get_product_val(post.id,'now')
 
     return render(request, 'product/index.html',
                   {'posts': posts, 'request': request})
+def get_product_val(pid,type):
+    product_info = Product.objects.get(id=pid)
+    cate_name = findCategory(product_info.category)
+    client = influxdb_client.InfluxDBClient(url=url, token=token, org=org)
+    query_api = client.query_api()
+    # 현재가 뽑아오는녀석
+    if type == 'low':
+        query=('''
+            from(bucket:"qrqr")
+            |> range(start: -365d, stop: now())
+            |> filter(fn: (r) => r["_measurement"] == "dragon_nest" and r["{0}"] == "1" and r["pid"] == "{1}" and r["_field"] == "Low_price")
+            |> sort(columns: ["_value"])
+            |> limit(n:1)
+           ''').format(cate_name,pid)
+    else:
+        query = ('''
+            from(bucket:"qrqr")
+            |> range(start: -1000m)
+            |> filter(fn: (r) => r["_measurement"] == "dragon_nest" and r["{0}"] == "1" and r["pid"] == "{1}" and r["_field"] == "Low_price")
+            |> last()
+        ''').format(cate_name,pid)
+    tables = query_api.query(query)
+    for table in tables:
+        for record in table.records:
+            return(record['_value'])
 
 @login_required(login_url='login')
 def like(request,pid):
@@ -99,3 +101,17 @@ def guduck_fc(uid,pid,type):
 
 def mains(request):
     return render(request, 'index.html')
+
+def findCategory(queryData):
+    if queryData == '1':
+        return "CPU"
+    elif queryData == '2':
+        return "MAIN_BOARD"
+    elif queryData == '3':
+        return "RAM"
+    elif queryData == '4':
+        return "SSD"
+    elif queryData == '5':
+        return "GPU"
+    elif queryData == '6':
+        return "POWER"
