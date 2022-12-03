@@ -71,7 +71,7 @@
                       <td>{{ post.query_data }}</td>
                       <td>현재가</td>
                       <td>최저가</td>
-                      <td><a class="post-meta" href="/like/{{ post.id }}?page={{ request.GET.page }}">
+                      <td><a class="post-meta" href="/like/{{ post.id }}?page={{ posts.in_page }}">
                                 {% if request.user in post.like.all %}
                                 <spen id="like_count">{{ post.like.count }}</spen>
                                 {% else %}

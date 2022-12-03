@@ -11,8 +11,11 @@ def list(request):
     # board_list 페이징 처리
     page = request.GET.get('page', '1')  # GET 방식으로 정보를 받아오는 데이터
     paginator = Paginator(g_lists, '3')  # Paginator(분할될 객체, 페이지 당 담길 객체수)
-    lists = paginator.page(page)  # 페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
 
+    if int(page) > int(paginator.num_pages) :
+        page = paginator.num_pages # 호출한 페이지가 총페이지보다 크면 마지막페이지 이동
+    lists = paginator.page(page)  # 페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
+    lists.in_page = page
     return render(request, 'guduck/index.html', {'lists': lists, 'request': request})
 
 @login_required(login_url='login') #나의 구독리스트 이므로 로그인여부 체크

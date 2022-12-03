@@ -14,7 +14,13 @@ def list(request,category):
     # board_list 페이징 처리
     page = request.GET.get('page', '1')  # GET 방식으로 정보를 받아오는 데이터
     paginator = Paginator(board_list, '3')  # Paginator(분할될 객체, 페이지 당 담길 객체수)
+
+    if int(page) > int(paginator.num_pages) :
+        page = paginator.num_pages # 호출한 페이지가 총페이지보다 크면 마지막페이지 이동
+
     posts = paginator.page(page)  # 페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
+    posts.in_page = page
+
     posts.category = category
     return render(request, 'product/index.html',
                   {'posts': posts, 'request': request})
