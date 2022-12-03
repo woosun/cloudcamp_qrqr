@@ -32,6 +32,7 @@ urlpatterns = [
     path('signup/', user.views.signup, name="signup"),
     path('login/', user.views.login, name="login"),
     path('logout/', user.views.logout, name="logout"),
+    path('mypage/', user.views.mypage, name="mypage"),
 
 
 
@@ -40,8 +41,6 @@ urlpatterns = [
  #   path('guduck/', product.views.list),
         # 나의 구독 수정(삭제)
  #   path('guduck/prog/<str:type>', product.views.prog),
-
-
 
 
 ]
