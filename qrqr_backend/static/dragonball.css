@@ -5,6 +5,11 @@
   padding: 0;
 }
 
+a{
+    font-family: 'Poor Story', cursive;
+}
+
+/*드래곤볼 사이즈 변경*/
 :root {
   font-size: 10px;
 }
@@ -24,7 +29,6 @@
 }
 
 .wrapper {
-  background: #f7f7f7;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,6 +66,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  z-index:10002;
 }
 
 .dragon-ball:before, .dragon-ball:after {
@@ -240,4 +245,119 @@
   100% {
     box-shadow: 0em 0em 2em 0.2em #FAB637;
   }
+}
+.img-dragonball-cpu{
+    width:100px;
+    height:100px;
+    position: inherit;
+    bottom: 20px;
+    left: -13px;
+    z-index:10001;
+    opacity:0;
+    transition: opacity 0.5s linear;
+}
+
+.img-dragonball-ram{
+    width:100px;
+    height:100px;
+    position: inherit;
+    bottom: 18px;
+    left: -14px;
+    z-index:10001;
+    opacity:0;
+    transition: opacity 0.5s linear;
+}
+.img-dragonball-mainboard{
+    width:100px;
+    height:100px;
+    position: inherit;
+    bottom: 25px;
+    left: 0px;
+    z-index:10001;
+    opacity:0;
+    transition: opacity 0.5s linear;
+}
+
+.img-dragonball-ssd{
+    width:100px;
+    height:100px;
+    position: inherit;
+    bottom: 20px;
+    left: -17px;
+    z-index:10001;
+    opacity:0;
+    transition: opacity 0.5s linear;
+}
+
+.img-dragonball-gpu{
+    width:100px;
+    height:100px;
+    position: inherit;
+    bottom: 18px;
+    left: -12px;
+    z-index:10001;
+    opacity:0;
+    transition: opacity 0.5s linear;
+}
+
+.img-dragonball-power{
+    width:100px;
+    height:100px;
+    position: inherit;
+    bottom: 19px;
+    left: -12px;
+    z-index:10001;
+    opacity:0;
+    transition: opacity 0.5s linear;
+}
+
+.dragon-ball:hover .img-dragonball-cpu{
+    display:block;
+    opacity:0.4;
+}
+
+.dragon-ball:hover .img-dragonball-ram{
+    display:block;
+    opacity:0.4;
+}
+
+.dragon-ball:hover .img-dragonball-mainboard{
+    display:block;
+    opacity:0.4;
+}
+.dragon-ball:hover .img-dragonball-ssd{
+    display:block;
+    opacity:0.4;
+}
+.dragon-ball:hover .img-dragonball-gpu{
+    display:block;
+    opacity:0.4;
+}
+.dragon-ball:hover .img-dragonball-power{
+    display:block;
+    opacity:0.4;
+}
+
+.main-dragonball-text{
+    z-index: 9999;
+    position: absolute;
+    top: 130px;
+    font-size: 12pt;
+    color: firebrick;
+    text-decoration: none;
+
+}
+.main-dragonball-text:visited{
+    text-decoration: none
+}
+
+.main-dragonball-text:hover{
+     color:firebrick; text-decoration: none;
+}
+.main-dragonball-text:link{
+     color:firebrick; text-decoration: none;
+}
+
+.nav-font{
+   font-weight: 900;
 }
