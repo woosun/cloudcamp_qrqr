@@ -17,8 +17,8 @@ def list(request):
     lists = paginator.page(page)  # 페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
     lists.in_page = page
 
-    list_for_random = range(25, 75)
-    return render(request, 'guduck/index.html', {'lists': lists, 'request': request, 'list_for_random': list_for_random})
+    list_for_random = range(15, 78)
+    return render(request, 'guduck/index.html', {'lists': lists, 'request': request, 'list_for_random': list_for_random, 'stars': g_lists})
 
 @login_required(login_url='login') #나의 구독리스트 이므로 로그인여부 체크
 def unlike(request,pid):
