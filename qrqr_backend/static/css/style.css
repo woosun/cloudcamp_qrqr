@@ -41,7 +41,7 @@ body {
   -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   left: 45.5%;
-  top: 17%;
+  top: 5%;
 }
 
 .down {
@@ -52,7 +52,7 @@ body {
   -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   left: 45.5%;
-  bottom: 17%;
+  bottom: 5%;
   transform: rotate(180deg);
 }
 
@@ -63,7 +63,7 @@ body {
   background: red;
   -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  left: 16%;
+  left: 5%;
   top: 46%;
   transform: rotate(-90deg);
 }
@@ -75,7 +75,7 @@ body {
   background: red;
   -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  right: 16%;
+  right: 5%;
   top: 46%;
   transform: rotate(90deg);
 }

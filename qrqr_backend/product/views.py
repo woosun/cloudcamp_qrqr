@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from guduck.models import guduck
 from django.core.paginator import Paginator
 import influxdb_client
+import json
+
 bucket = "qrqr"
 org = "qrqr"
 token = "DJFvAGHanKa1AUci8PLbzrhm1UPjayh5Re5ulyFCvx4BVVt8JQVi0rdw0jiwPHAlKLAq1l4N-4DcZR0i8oun2w=="
@@ -28,9 +30,30 @@ def list(request,category):
     for post in posts:
         post.Low_price = get_product_val(post.id,'low')
         post.price = get_product_val(post.id,'now')
-
+        post.week_prices = get_product_week_val(post.id)
+        print(post)
     return render(request, 'product/index.html',
                   {'posts': posts, 'request': request})
+def get_product_week_val(pid):
+    product_info = Product.objects.get(id=pid)
+    cate_name = findCategory(product_info.category)
+    client = influxdb_client.InfluxDBClient(url=url, token=token, org=org)
+    query_api = client.query_api()
+    query = ('''
+        from(bucket:"qrqr")
+        |> range(start: -7d, stop: now() )
+        |> filter(fn: (r) => r["_measurement"] == "dragon_nest" and r["{0}"] == "1" and r["pid"] == "{1}" and r["_field"] == "Low_price")
+        |> window(every: 1d)
+        |> last()
+        |> window(every: inf)
+       ''').format(cate_name, pid)
+    tables = query_api.query(query).to_json(indent=5)
+    json_objects = json.loads(tables)
+    for week_prices in json_objects:
+        for week_price in week_prices:
+            print(week_price)
+    return json_objects
+
 def get_product_val(pid,type):
     product_info = Product.objects.get(id=pid)
     cate_name = findCategory(product_info.category)
