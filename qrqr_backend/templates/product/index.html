@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>드래곤볼 리스트</title>
+    <link rel="stylesheet" href="/static/list-style.css">
+    {% include "base.html" %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const labels = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+      ];
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'My First dataset',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [0, 10, 5, 23, 20, 30, 45],
+        }]
+      };
+      const config = {
+        type: 'line',
+        data: data,
+        options: {}
+      };
+    </script>
 </head>
 <body>
+{% include "top.html" %}
+{% load static %}
+{% block content %}
     {% if posts %}
-          <div>
-              <table border="1">
+          <div class="table-responsive">
+              <table  class="table">
+                  <thead>
                   <tr>
-                      <td>id</td>
-                      <td>category</td>
-                      <td>name</td>
-                      <td>imgsrc</td>
-                      <td>display_yn</td>
-                      <td>query_yn</td>
-                      <td>query_data</td>
-                      <td>create_date</td>
-                      <td>구독하기</td>
+                      <th scope="col">id</th>
+                      <th scope="col">category</th>
+                      <th scope="col">name</th>
+                      <th scope="col">imgsrc</th>
+                      <th scope="col">display_yn</th>
+                      <th scope="col">query_yn</th>
+                      <th scope="col">query_data</th>
+                      <th scope="col">현재가</th>
+                      <th scope="col">최저가</th>
+                      <th scope="col">구독하기</th>
+                      <th scope="col">차트</th>
                   </tr>
+                  </thead>
         {% for post in posts %}
                   <tr>
                       <td>{{ post.id }}</td>
@@ -29,16 +61,17 @@
                       <td>{{ post.name }}</td>
                       <td>
                           {% if post.imgsrc %}
-                            <img src="{% get_media_prefix %}{{ post.imgsrc }}" class="product_img"/>
+                            <img src="{% get_media_prefix %}{{ post.imgsrc }}" class="img-fluid"/>
                           {% else %}
-                            <img src="{% get_media_prefix %}/noimage.png" class="product_img"/>
+                            <img src="{% get_media_prefix %}/noimage.png" class="img-fluid"/>
                           {% endif %}
                       </td>
                       <td>{{ post.display_yn }}</td>
                       <td>{{ post.query_yn }}</td>
                       <td>{{ post.query_data }}</td>
-                      <td>{{ post.create_date }}</td>
-                      <td><a class="post-meta" href="/like/{{ post.id }}">
+                      <td>현재가</td>
+                      <td>최저가</td>
+                      <td><a class="post-meta" href="/like/{{ post.id }}?page={{ posts.in_page }}">
                                 {% if request.user in post.like.all %}
                                 <spen id="like_count">{{ post.like.count }}</spen>
                                 {% else %}
@@ -46,28 +79,102 @@
                                 {% endif %}
                             </a>
                       </td>
-
+                      <td><canvas id="chart_{{post.id}}"></canvas>
+                          <p class="chart-display">820px 이상의 해상도에서 지원됩니다</p>
+                      <script>const chart_{{post.id}} = new Chart(document.getElementById('chart_{{post.id}}'),config);</script>
+                      </td>
                   </tr>
         {% endfor %}
             </table>
+    <!-- 페이징처리 시작 -->
+    <div id="paging">
+        <ul class="pagination justify-content-center" style="margin-top: 2rem;">
+            <!-- 이전페이지 -->
+            {% if posts.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="/list/{{ posts.category }}?page={{ posts.previous_page_number }}">이전</a>
+                <!-- href로 뎁스 설정 -->
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+            </li>
+            {% endif %}
+            <!-- 페이지리스트 -->
+            {% for page_number in posts.paginator.page_range %}
+            {% if page_number == posts.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="/list/{{ posts.category }}?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="/list/{{ posts.category }}?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            <!-- 다음페이지 -->
+            {% if posts.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="/list/{{ posts.category }}?page={{ posts.next_page_number }}">다음</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    <!-- 페이징처리 끝 -->
           </div>
     {% endif %}
-    <script type="module" src="/app.js"></script>
+<script type="module" >
+    import {
+        InfluxDB
+    } from 'https://unpkg.com/@influxdata/influxdb-client/dist/index.browser.mjs'
+    const token = '4qXKhfM1MRtAd_nR2_-JZu7Uxyr2Nl0bffIRiGP5bYt-6utys4e7r77dEdG5tefIwnSQPzRrAErkQkakhKy55g=='
+    const client = new InfluxDB({
+        url: 'http://influx.oud.kr:8086',
+        token: token
+    })
+    const query = stock => 'from(bucket: "qrqr")  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)  |> filter(fn: (r) => r["_measurement"] == "dragon_nest")
+  |> filter(fn: (r) => r["CPU"] == "1")  |> filter(fn: (r) => r["_field"] == "Low_price")'
+    const dates = []
+    const high_vals = []
+    const observer = {
+    next(row, tableMeta) {
+        const r = tableMeta.toObject(row)
+        const date = new Date(r['_time']).toLocaleDateString()
+        dates.push(date)
+        const value = r['_value']
+        high_vals.push(value)
+    },
+    error(error) {
+        console.error(error)
+        console.log('\nFinished ERROR')
+    },
+    complete() {
+        // Line Chart
+        const data = {
+            labels: dates,
+            datasets: [{
+                label: 'Stock High',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: high_vals
+            }]
+        }
+        const config_line = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: false
+            }
+        };
+        const myLineChart = new Chart(document.getElementById('lineChart'), config_line);
+    }
+}
+queryApi.queryRows(query('AAPL'), observer)
+</script>
 </body>
 </html>
-
-<script>
-    function sendRequest(bid) {
-			var httpRequest = new XMLHttpRequest();
-			httpRequest.onreadystatechange = function() {
-				if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200 ) {
-					console.log(aa.like_cnt)
-				}
-			};
-			// GET 방식으로 요청을 보내면서 데이터를 동시에 전달함.
-			httpRequest.open("GET", "/like/"+bid, true);
-			httpRequest.send();
-		}
-</script>
 {% endblock %}
-{% include "footer.html" %}

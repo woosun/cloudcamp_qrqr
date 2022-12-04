@@ -32,6 +32,7 @@ urlpatterns = [
     path('signup/', user.views.signup, name="signup"),
     path('login/', user.views.login, name="login"),
     path('logout/', user.views.logout, name="logout"),
+    path('mypage/', user.views.mypage, name="mypage"),
 
 
 

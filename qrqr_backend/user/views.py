@@ -6,9 +6,11 @@ from django.contrib.auth.decorators import login_required
 from .forms import cSignupForm
 from django.contrib.auth import authenticate, login
 
-# from user.forms import ProfileForm
+from guduck.models import guduck
 
-# Create your views here.
+
+
+
 def signup(request):
     print('회원가입호출')
     if request.method == 'POST':
@@ -57,6 +59,13 @@ def edit_user_profile(request):
                 profile_file.save()
             return redirect('/list/')
     return redirect('/list/')
+
+@login_required(login_url='login') #마이페이지는 로그인여부 체크
+def mypage(request): #마이페이지 호출
+    #나의 구독갯수 처리
+    lists = guduck.objects.filter(uid_id = request.user.id,read_yn=1).order_by('-id')
+    lists.random = range(15, 78)
+    return render(request, 'user/mypage.html', {'request': request, 'stars': lists})
 
 
 #임시로 만든 메인페이지
