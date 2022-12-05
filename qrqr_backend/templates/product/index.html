@@ -50,16 +50,13 @@
                       </td>
                       <td>
 {% if post.week_prices %}
-                          {% for week_price in post.week_prices %}
-                          {{ week_price }}
-                          {% endfor %}
 <canvas id="chart_{{post.id}}"></canvas>
 <script>
-const labels_{{post.id}} = [ '월', '화',  '수',  '목',  '금',  '토', ];
+const labels_{{post.id}} = [ {% for week_price in post.week_prices %}'{{ week_price.time_w }}',{% endfor %}];
 const data_{{post.id}} = {
     labels: labels_{{post.id}},
     datasets: [{ label: 'product_{{post.id}}',backgroundColor: 'rgb(255, 99, 132)',borderColor: 'rgb(255, 99, 132)',
-    data: [{% for week_price in post.week_prices %} 10,{% endfor %}],}]
+    data: [{% for week_price in post.week_prices %} {{ week_price.value }},{% endfor %}],}]
 };
 const config_{{post.id}} = { type: 'line',data: data_{{post.id}},options: {plugins: { legend: { display: false   } } } };
 const chart_{{post.id}} = new Chart(document.getElementById('chart_{{post.id}}'),config_{{post.id}});

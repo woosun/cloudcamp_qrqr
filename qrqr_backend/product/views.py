@@ -5,6 +5,7 @@ from guduck.models import guduck
 from django.core.paginator import Paginator
 import influxdb_client
 import json
+import datetime
 
 bucket = "qrqr"
 org = "qrqr"
@@ -35,6 +36,7 @@ def list(request,category):
     return render(request, 'product/index.html',
                   {'posts': posts, 'request': request})
 def get_product_week_val(pid):
+    date_format = '%Y-%m-%dT%H:%M:%S.%f+00:00'
     product_info = Product.objects.get(id=pid)
     cate_name = findCategory(product_info.category)
     client = influxdb_client.InfluxDBClient(url=url, token=token, org=org)
@@ -50,8 +52,16 @@ def get_product_week_val(pid):
     tables = query_api.query(query).to_json(indent=5)
     json_objects = json.loads(tables)
     for week_prices in json_objects:
-        for week_price in week_prices:
-            print(week_price)
+        #week_prices = json.dumps(week_prices)
+        print(week_prices)
+
+        week_prices['value'] = week_prices['_value']
+        week_prices['time'] = week_prices['_time']
+        date_dt  = datetime.datetime.strptime(week_prices['_time'], date_format)
+        week_prices['time_w'] = date_dt.strftime('%a')
+        del week_prices['_value']
+        del week_prices['_time']
+        print(week_prices)
     return json_objects
 
 def get_product_val(pid,type):
