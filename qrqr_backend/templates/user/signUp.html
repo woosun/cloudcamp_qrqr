@@ -38,7 +38,11 @@
                                            id="password2" value="{{signupForm.password2.value|default_if_none:'' }}">
                                     <label for="username" class="signup-label">Password reconfirm </label>
                                 </div>
-
+                                <div class="form-outline form-white mb-4 form-group">
+                                    <input type="text" class="form-control form-control-lg" name="email"
+                                           id="email" value="{{signupForm.email.value|default_if_none:'' }}">
+                                    <label for="email" class="signup-label">email</label>
+                                </div>
                                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign up</button>
 
                             </div>
@@ -55,7 +59,7 @@
             </div>
                    </div>
     </form>
-
+{% include "footer.html" %}
     <!--    {% endblock %}-->
 </body>
 </html>

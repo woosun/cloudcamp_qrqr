@@ -60,7 +60,8 @@
     <!--구독 상품 위치 추척기-->
     <h1>나의 푸쉬알림 로그</h1>
     <h1>탈퇴하기</h1>
-    <h1>로그아웃하기</h1>
+    <h1 onclick="location.href = '{% url 'logout' %}'">로그아웃하기</h1>
+{% include "footer.html" %}
 </body>
 </html>
 {% endblock %}

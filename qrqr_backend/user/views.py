@@ -22,7 +22,7 @@ def signup(request):
             # user = authenticate(username=username, password=raw_password)
             # login(request, user)
             print('회원가입성공')
-            return redirect('user/login.html')
+            return redirect('/')
     else:
         signupForm = cSignupForm()
     return render(request,'user/signUp.html',{'signupForm':signupForm})
@@ -57,8 +57,8 @@ def edit_user_profile(request):
                 # 원래는 이미지 확인하는 소스를 만들어야 하지만 테스트 이므로 그냥 한다.
                 profile_file.writer = request.user
                 profile_file.save()
-            return redirect('/list/')
-    return redirect('/list/')
+            return redirect('/mypage/')
+    return redirect('/mypage/')
 
 @login_required(login_url='login') #마이페이지는 로그인여부 체크
 def mypage(request): #마이페이지 호출
