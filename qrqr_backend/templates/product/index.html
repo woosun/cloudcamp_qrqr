@@ -5,8 +5,22 @@
     <meta charset="UTF-8">
     <title>드래곤볼 리스트</title>
     {% include "base.html" %}
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/list-style.css">
+    <style>
+        .grid {
+            display: grid;
+            gap: 1em;
+            grid-template-rows: min-content 1fr min-content;
+            grid-template-columns: 1fr 3fr;
+            grid-template-areas: "a h"
+                                                     "a c"
+                                                     "a f";
+            height: calc(50vh - 2em);
+            width: calc(50vw - 2em); /* not necessary, but just to be explicit */
+            margin: 1em;
+        }
+    </style>
 </head>
 <body>
 {% include "top.html" %}
@@ -49,20 +63,24 @@
                             </a>
                       </td>
                       <td>
-                    {% if post.week_prices %}
-                    <canvas id="chart_{{post.id}}"></canvas>
-                          <p class="chart-display">820px 이상의 해상도에서 지원됩니다</p>
-                        <script>
-                        const labels_{{post.id}} = [ {% for week_price in post.week_prices %}'{{ week_price.time_w }}',{% endfor %}];
-                        const data_{{post.id}} = {
-                            labels: labels_{{post.id}},
-                            datasets: [{ label: 'product_{{post.id}}',backgroundColor: 'rgb(255, 99, 132)',borderColor: 'rgb(255, 99, 132)',
-                            data: [{% for week_price in post.week_prices %} {{ week_price.value }},{% endfor %}],}]
-                        };
-                        const config_{{post.id}} = { type: 'line',data: data_{{post.id}},options: {plugins: { legend: { display: false   } } } };
-                        const chart_{{post.id}} = new Chart(document.getElementById('chart_{{post.id}}'),config_{{post.id}});
-                        </script>
-
+                        {% if post.week_prices %}
+                         <div class="grid">
+                            <canvas id="chart_{{post.id}}"></canvas>
+                            <script>
+                            const labels_{{post.id}} = [ {% for week_price in post.week_prices %}'{{ week_price.time_w }}',{% endfor %}];
+                            const data_{{post.id}} = {
+                                labels: labels_{{post.id}},
+                                datasets: [{ label: 'product_{{post.id}}',backgroundColor: 'rgb(255, 99, 132)',borderColor: 'rgb(255, 99, 132)',
+                                data: [{% for week_price in post.week_prices %} {{ week_price.value }},{% endfor %}],}]
+                            };
+                            const config_{{post.id}} = { type: 'line',data: data_{{post.id}},
+                            options: {
+                                responsive : true,
+                                plugins: { legend: { display: false   } } }
+                            };
+                            const chart_{{post.id}} = new Chart(document.getElementById('chart_{{post.id}}'),config_{{post.id}});
+                            </script>
+                          </div>
                           {% endif %}
                       </td>
                   </tr>

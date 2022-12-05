@@ -52,16 +52,12 @@ def get_product_week_val(pid):
     tables = query_api.query(query).to_json(indent=5)
     json_objects = json.loads(tables)
     for week_prices in json_objects:
-        #week_prices = json.dumps(week_prices)
-        print(week_prices)
-
         week_prices['value'] = week_prices['_value']
         week_prices['time'] = week_prices['_time']
         date_dt  = datetime.datetime.strptime(week_prices['_time'], date_format)
         week_prices['time_w'] = date_dt.strftime('%a')
         del week_prices['_value']
         del week_prices['_time']
-        print(week_prices)
     return json_objects
 
 def get_product_val(pid,type):
