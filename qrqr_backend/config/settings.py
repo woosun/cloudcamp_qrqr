@@ -3,12 +3,22 @@ from pathlib import Path
 import pymysql
 import os
 import json
+import firebase_admin
+from firebase_admin import credentials
+
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+#파벳 셋팅
+cred_path = os.path.join(BASE_DIR, "serviceAccountKey.json")
+cred = credentials.Certificate(cred_path)
+firebase_admin.initialize_app(cred)
+
 pymysql.install_as_MySQLdb()
 
-LOGIN_REDIRECT_URL = 'index.html'
+LOGIN_REDIRECT_URL = '/'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 secret_file = os.path.join(BASE_DIR, 'secret.json')
