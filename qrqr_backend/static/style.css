@@ -3,10 +3,10 @@
 background: #81f22a;
 
 /* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, rgba(110, 203, 17, 1), rgba(88, 203, 17, 1));
+background: -webkit-linear-gradient(to right, rgb(145 255 34), rgb(218 224 0));
 
 /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, rgba(110, 203, 17, 1), rgba(88, 203, 17, 1))
+background: linear-gradient(to right, rgb(145 255 34), rgb(218 224 0))
 }
 
 .scroll-none::-webkit-scrollbar {
@@ -45,4 +45,13 @@ scroll: no;
 .main-btn-margin{
     margin-left: 1rem;
     margin-right: 1rem;
+}
+
+.bg-color{
+    background-color: #198754;
+}
+
+.nav-font{
+   font-weight: 900;
+   font-family: 'Poor Story', cursive;
 }

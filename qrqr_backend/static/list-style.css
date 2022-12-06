@@ -19,7 +19,7 @@
 
 @media (max-width: 820px) {
   canvas{
-    display:none !important;;
+    display:none !important;
   }
   .chart-display{
     display: inline !important;
@@ -29,4 +29,5 @@
 .chart-display{
     display:none;
 }
+
 

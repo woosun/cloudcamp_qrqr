@@ -8,6 +8,9 @@
 a{
     font-family: 'Poor Story', cursive;
 }
+body .bg-color{
+ background-color: #006536c9;
+}
 
 /*드래곤볼 사이즈 변경*/
 :root {
@@ -360,4 +363,17 @@ a{
 
 .nav-font{
    font-weight: 900;
+   font-family: 'Poor Story', cursive;
+}
+
+.wrapper{
+    background-color: #198754;
+}
+
+.justify-content-between{
+    background-color: #198754;
+}
+
+.row {
+    --bs-gutter-x: 0rem !important;
 }
