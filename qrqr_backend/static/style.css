@@ -53,6 +53,10 @@ scroll: no;
     background-color: #198754;
 }
 
+.sb-topnav{
+
+}
+
 .nav-font{
    font-weight: 900;
    font-size: 14pt;
@@ -74,4 +78,24 @@ scroll: no;
 
 .table{
     margin-bottom: 0;
+}
+
+.top-category-a{
+    text-decoration: none;
+    color: rgb(235 60 60 / 86%);
+    font-size: 14pt;
+    transition: 0.5s;
+    font-family: 'Poor Story', cursive;
+}
+
+.top-category-a:hover{
+    color: rgb(43 100 75 / 86%);
+}
+
+.top-category-a:link{ text-decoration: none; }
+.top-category-a:visited{ text-decoration: none; }
+
+.navbar{
+    padding-top: 0;
+    padding-bottom: 0;
 }
