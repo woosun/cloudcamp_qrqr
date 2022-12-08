@@ -8,12 +8,12 @@
     <a class="navbar-brand ps-3 nav-font" href="/">찾아라 드래곤볼</a>
     <!-- Navbar Search-->
     <div class="" style="border: solid 1px red;">
-        <table class="table">
-            <thead>
+        <table class="table top-category">
+            <thead class="top-thead-border">
             <tr>
                 <th scope="col"><a href="{% url 'list' category=1 %}">cpu</a></th>
-                <th scope="col"><a href="{% url 'list' category=2 %}">램</a></th>
-                <th scope="col"><a href="{% url 'list' category=3 %}">메인보드</a></th>
+                <th scope="col"><a href="{% url 'list' category=3 %}">램</a></th>
+                <th scope="col"><a href="{% url 'list' category=2 %}">메인보드</a></th>
                 <th scope="col"><a href="{% url 'list' category=4 %}">SSD</a></th>
                 <th scope="col"><a href="{% url 'list' category=5 %}">그래픽카드</a></th>
                 <th scope="col"><a href="{% url 'list' category=6 %}">파워</a></th>

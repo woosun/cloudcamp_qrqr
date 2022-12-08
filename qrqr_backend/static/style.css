@@ -64,3 +64,14 @@ scroll: no;
 .nav-font:hover{
     color: rgb(43 100 75 / 86%);
 }
+
+.top-category{
+    text-decoration: none;
+}
+.top-thead-border{
+    border: none;
+}
+
+.table{
+    margin-bottom: 0;
+}
