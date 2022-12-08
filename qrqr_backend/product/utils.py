@@ -11,6 +11,5 @@ def rename_imagefile_to_uuid(instance,filename):
         filename = '{}_{}.{}'.format(uuid, instance, ext)
     else:
         filename = '{}.{}'.format(uuid, ext)
-    print(upload_to)
-    print(filename)
+
     return os.path.join(upload_to, filename)
