@@ -1,15 +1,29 @@
+<link rel="stylesheet" href="/static/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 {% if user.is_authenticated %}
-<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #ffda84;">
+<nav class="sb-topnav navbar navbar-expand navbar-light d-flex justify-content-between" style="background-color: #ffc12f;">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3 nav-font" href="/" style="color: #68c415;">찾아라 드래곤볼</a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-            class="fas fa-bars"></i></button>
+    <a class="navbar-brand ps-3 nav-font" href="/">찾아라 드래곤볼</a>
     <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-    </form>
+    <div class="" style="border: solid 1px red;">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"><a href="{% url 'list' category=1 %}">cpu</a></th>
+                <th scope="col"><a href="{% url 'list' category=2 %}">램</a></th>
+                <th scope="col"><a href="{% url 'list' category=3 %}">메인보드</a></th>
+                <th scope="col"><a href="{% url 'list' category=4 %}">SSD</a></th>
+                <th scope="col"><a href="{% url 'list' category=5 %}">그래픽카드</a></th>
+                <th scope="col"><a href="{% url 'list' category=6 %}">파워</a></th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
     <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4" style="border: solid 1px red;">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                aria-expanded="false" style="font-size:17px"><strong>{{user.username}}</strong>&nbsp&nbsp</a>
@@ -27,17 +41,16 @@
     </ul>
 </nav>
 {% else %}
-<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #ffda84;">
+<nav class="sb-topnav navbar navbar-expand navbar-light"
+     style="background-color: #ffc12f; padding-top: 8px;padding-bottom: 8px;">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/">찾아라 드래곤볼</a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-            class="fas fa-bars"></i></button>
+    <a class="navbar-brand ps-3 nav-font" href="/">찾아라 드래곤볼</a>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
     </form>
     <!-- Navbar-->
-    <button class="btn btn-primary ms-auto ms-md-0 me-3 me-lg-4" style="text-align:center;"
+    <button class="btn btn-primary ms-auto ms-md-0 me-3 me-lg-4 "
+            style="text-align:center; background-color:#198754; border:none;"
             onclick="location.href = '{% url 'login' %}'"> 로그인 하러가기
     </button>
 </nav>

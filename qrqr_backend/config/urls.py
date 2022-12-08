@@ -24,6 +24,8 @@ urlpatterns = [
     path('list/<str:category>', product.views.list, name="list"),
         #상세
     path('product/<str:type>', product.views.prog),
+    # 메인페이지 #상품표시
+    # path('/<str:type>', product.views.prog),
 
 
 

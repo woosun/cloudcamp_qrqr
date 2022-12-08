@@ -4,15 +4,9 @@ import pymysql
 import os
 import json
 import firebase_admin
-from firebase_admin import credentials
-
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-#파벳 셋팅
-cred_path = os.path.join(BASE_DIR, "serviceAccountKey.json")
-cred = credentials.Certificate(cred_path)
-firebase_admin.initialize_app(cred)
+
 
 pymysql.install_as_MySQLdb()
 

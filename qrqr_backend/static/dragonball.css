@@ -5,22 +5,19 @@
   padding: 0;
 }
 
+.bg-color{
+ background-color: #198754;;
+}
 a{
     font-family: 'Poor Story', cursive;
 }
-
 /*드래곤볼 사이즈 변경*/
 :root {
   font-size: 10px;
 }
-@media screen and (max-width: 200px) {
+@media screen and (max-width: 1220px) {
   :root {
-    font-size: 10px;
-  }
-}
-@media screen and (max-width: 200px) {
-  :root {
-    font-size: 10px;
+    font-size: 10px ;
   }
 }
 
@@ -34,26 +31,6 @@ a{
   justify-content: center;
 }
 
-.container {
-  position: relative;
-  padding: 0;
-  border-radius: 100%;
-  background: transparent;
-  margin: 0;
-  -webkit-animation: glow 1.4s ease-in-out infinite;
-          animation: glow 1.4s ease-in-out infinite;
-}
-.container:before {
-  content: "";
-  position: absolute;
-  bottom: 0.7em;
-  left: -5em;
-  width: 14.8em;
-  height: 1.4em;
-  border-radius: 12.5em/1.875em;
-  background: rgba(36, 36, 36, 0.004);
-  box-shadow: 0em 0em 1.9em 2em rgba(36, 36, 36, 0.004);
-}
 
 .dragon-ball {
   height: 18rem;
@@ -357,7 +334,19 @@ a{
 .main-dragonball-text:link{
      color:firebrick; text-decoration: none;
 }
+.wrapper{
+    background-color: #198754;
+}
 
-.nav-font{
-   font-weight: 900;
+.justify-content-between{
+    background-color: #198754;
+}
+
+.row {
+    --bs-gutter-x: 0rem !important;
+}
+
+div .col-md-1{
+    width:200px;
+    height:200px;
 }
