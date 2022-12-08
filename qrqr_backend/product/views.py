@@ -32,7 +32,6 @@ def list(request,category):
         post.Low_price = get_product_val(post.id,'low')
         post.price = get_product_val(post.id,'now')
         post.week_prices = get_product_week_val(post.id)
-        print(post)
     return render(request, 'product/index.html',
                   {'posts': posts, 'request': request})
 def get_product_week_val(pid):
