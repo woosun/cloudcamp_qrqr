@@ -131,8 +131,7 @@ USE_TZ = False
 
 
 # AWS Setting
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
 AWS_STORAGE_BUCKET_NAME = 'qrqr-static'
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_HOST = 's3.%s.amazonaws.com' % secrets['AWS_REGION']
@@ -141,13 +140,8 @@ AWS_SECRET_ACCESS_KEY = secrets['AWS_SECRET_ACCESS_KEY']
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_DEFAULT_ACL = 'public-read'
 AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
-# s3 static settings
-AWS_LOCATION = 'static'
 
-# Static Setting
 STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
-
-#Media Setting
 MEDIA_URL = "https://%s/media/" % AWS_S3_CUSTOM_DOMAIN
 
 
@@ -156,4 +150,4 @@ MEDIA_URL = "https://%s/media/" % AWS_S3_CUSTOM_DOMAIN
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ["http://qrqr.oud.kr", "https://qrqr.oud.kr"]
+CSRF_TRUSTED_ORIGINS = ["http://qrqr.oud.kr", "https://qrqr.oud.kr", "http://qr.oud.kr", "https://qr.oud.kr"]
