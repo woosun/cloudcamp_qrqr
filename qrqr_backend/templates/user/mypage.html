@@ -4,65 +4,93 @@
     <meta charset="UTF-8">
     <title>나의 드래곤볼</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     {% include "base.html" %}
 </head>
 <body>
-    {% include "top.html" %}
+{% include "top.html" %}
 {% load static %}
 {% block content %}
-    <!--마이페이지 처리 이곳은 내정보-->
-    <h1>유저정보</h1>
-    <table class="table">
-        <tr>
-            <td>번호</td>
-            <td>{{ request.user.id}}</td>
-        </tr>
-        <tr>
-            <td>아이디</td>
-            <td>{{ request.user.username}}</td>
-        </tr>
-        <tr>
-            <td>이메일</td>
-            <td>{{ request.user.email}}</td>
-        </tr>
-        <tr>
-            <td>가입일자</td>
-            <td>{{ request.user.date_joined}}</td>
-        </tr>
-        <tr>
-            <td>마지막로그인시간</td>
-            <td>{{ request.user.last_login}}</td>
-        </tr>
-    </table>
+<div class="container-fluid" style="">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row d-flex justify-content-center" style="margin-top:2.5rem;">
+                <div class="col-6 col-md-6 col-xl-6 col-lg-6 col-sm-6" style="">
 
-    <!--마이페이지 처리 이곳은 내정보 끝-->
-    <!--구독 상품 위치 추척기-->
-    <h1>구독상품 위치추적기</h1>
-    {% if stars %}
-
-    <div class="canvas">
-        <a href="/myguduck/?page=1">
-        <div class="radar">
-            <div class="up"></div>
-            <div class="down"></div>
-            <div class="left"></div>
-            <div class="right"></div>
-        {% for star in stars %}
-                <div class="ball-1" style="top: {{ stars.random | random }}%; left: {{ stars.random | random }}%"></div>
-        {% endfor %}
+                    <!--마이페이지 처리 이곳은 내정보-->
+                    <h1 class="mypage-bold">유저정보</h1>
+                    <table class="table" style="border-collapse: collapse;">
+                        <tr class="mypage-tr-borderbtm">
+                            <td class="mypage-td-borderbtm" style="">
+                                <h4 class="mypage-fadefont">번호</h4>
+                                <h6 class="mypage-h6">{{request.user.id}}</h6>
+                            </td>
+                        </tr>
+                        <tr class="mypage-tr-borderbtm">
+                            <td class="mypage-td-borderbtm">
+                                <h4 class="mypage-fadefont">아이디</h4>
+                                <h6 class="mypage-h6">{{ request.user.username}}</h6>
+                            </td>
+                        </tr>
+                        <tr class="mypage-tr-borderbtm">
+                            <td class="mypage-td-borderbtm">
+                                <h4 class="mypage-fadefont">이메일</h4>
+                                <h6 class="mypage-h6">{{ request.user.email}}</h6>
+                            </td>
+                        </tr>
+                        <tr class="mypage-tr-borderbtm">
+                            <td class="mypage-td-borderbtm">
+                                <h4 class="mypage-fadefont">가입일자</h4>
+                                <h6 class="mypage-h6">{{ request.user.date_joined}}</h6>
+                            </td>
+                        </tr>
+                        <tr class="mypage-tr-borderbtm">
+                            <td class="mypage-td-borderbtm">
+                                <h4 class="mypage-fadefont">마지막로그인시간</h4>
+                                <h6 class="mypage-h6">{{ request.user.last_login}}</h6>
+                            </td>
+                        </tr>
+                        <tr class="mypage-tr-borderbtm">
+                            <td class="mypage-td-borderbtm">
+                                <a class="mypage-a" onclick="location.href = '{% url 'logout' %}'">로그아웃하기</a><br>
+                                <a class="mypage-a">나의 푸쉬알림</a><br>
+                                <a class="mypage-a">탈퇴하기</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--마이페이지 처리 이곳은 내정보 끝-->
+                </div>
+                <div class="col-3 col-md-3 col-xl-3 col-lg-3 col-sm-3 mypage-div-rader d-flex justify-content-center">
+                    <!--구독 상품 위치 추척기-->
+                    <h1 class="mypage-bold mypage-text-center">구독상품 위치추적기</h1>
+                    {% if stars %}
+                    <div class="canvas mypage-rader">
+                        <a href="/myguduck/?page=1">
+                            <div class="radar">
+                                <div class="up"></div>
+                                <div class="down"></div>
+                                <div class="left"></div>
+                                <div class="right"></div>
+                                {% for star in stars %}
+                                <div class="ball-1"
+                                     style="top: {{ stars.random | random }}%; left: {{ stars.random | random }}%"></div>
+                                {% endfor %}
+                            </div>
+                        </a>
+                    </div>
+                    {% else %}
+                    <h1 class="display-6"> 구독내역이 없습니다. </h1>
+                    {% endif %}
+                    <!--구독 상품 위치 추척기 끝-->
+                </div>
+            </div>
         </div>
-        </a>
     </div>
-
-    {% else %}
-    <h1 class="display-6"> 구독내역이 없습니다. </h1>
-    {% endif %}
-    <!--구독 상품 위치 추척기-->
-    <h1>나의 푸쉬알림 로그</h1>
-    <h1>탈퇴하기</h1>
-    <h1 onclick="location.href = '{% url 'logout' %}'">로그아웃하기</h1>
-{% include "footer.html" %}
+</div>
 </body>
+{% include "footer.html" %}
 </html>
 {% endblock %}
-{% include "footer.html" %}
+

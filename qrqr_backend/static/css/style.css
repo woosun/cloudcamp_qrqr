@@ -4,22 +4,22 @@ body {
 
 .canvas {
   position: relative;
-  height: 400px;
-  width: 600px;
+  height: 390px;
+  width: 400px;
   margin: auto;
   margin-top: 5%;
 }
 
 .radar {
   position: absolute;
-  height: 75%;
+  height: 50%;
   width: 50%;
   border-radius: 50%;
   background: green;
   border: gray solid 10px;
-  top: 15%;
-  left: 25%;
   background-size: 20px 20px;
+  left:25%;
+  top:14%;
   background-image: linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px);
 }
 .radar:after {
@@ -162,8 +162,8 @@ body {
 }
 @media all and (max-width: 600px) {
   .canvas {
-    height: 300px;
-    width: 450px;
+    height: 380px;
+    width: 390px;
     margin-top: 30%;
   }
 }
