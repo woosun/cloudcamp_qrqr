@@ -16,12 +16,12 @@
 <div class="container-fluid" style="">
     <div class="row">
         <div class="col-md-12">
-            <div class="row d-flex justify-content-center" style="margin-top:2.5rem;">
+            <div class="row d-flex justify-content-center" style="margin-top:2.5rem; ">
                 <div class="col-6 col-md-6 col-xl-6 col-lg-6 col-sm-6" style="">
 
                     <!--마이페이지 처리 이곳은 내정보-->
                     <h1 class="mypage-bold">유저정보</h1>
-                    <table class="table" style="border-collapse: collapse;">
+                    <table class="table" style="border-collapse: collapse; ">
                         <tr class="mypage-tr-borderbtm">
                             <td class="mypage-td-borderbtm" style="">
                                 <h4 class="mypage-fadefont">번호</h4>
@@ -53,7 +53,7 @@
                             </td>
                         </tr>
                         <tr class="mypage-tr-borderbtm">
-                            <td class="mypage-td-borderbtm">
+                            <td class="mypage-td-borderbtm" style="">
                                 <a class="mypage-a" onclick="location.href = '{% url 'logout' %}'">로그아웃하기</a><br>
                                 <a class="mypage-a">나의 푸쉬알림</a><br>
                                 <a class="mypage-a">탈퇴하기</a>
@@ -62,7 +62,7 @@
                     </table>
                     <!--마이페이지 처리 이곳은 내정보 끝-->
                 </div>
-                <div class="col-3 col-md-3 col-xl-3 col-lg-3 col-sm-3 mypage-div-rader d-flex justify-content-center">
+                <div class="col-3 col-md-3 col-xl-3 col-lg-3 col-sm-3 mypage-div-rader d-flex justify-content-center" style="">
                     <!--구독 상품 위치 추척기-->
                     <h1 class="mypage-bold mypage-text-center">구독상품 위치추적기</h1>
                     {% if stars %}

@@ -11,10 +11,10 @@
 {% include "top.html" %}
 {% load static %}
 {% block content %}
-<div class="container d-flex justify-content-between">
-	<div class="row  ">
-		<div class="col-12">
-			<div class="row wrapper">
+<div class="container justify-content-between">
+    <div class="row  ">
+        <div class="col-12">
+            <div class="row wrapper">
                 <div class="col-6 col-sm-5 col-md-4 col-lg-4 col-xl-2" style="margin-top:7rem;">
                     <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
                         <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=1 %}" type=""
@@ -48,7 +48,8 @@
 
                         <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=2 %}" type=""
                            style="position: absolute; z-index: 9999;">
-                            <img class="img-dragonball-mainboard" src="static/img/img-dragonball-mainboard.png" style="">
+                            <img class="img-dragonball-mainboard" src="static/img/img-dragonball-mainboard.png"
+                                 style="">
                             메인보드 보러가기
                         </a>
 
@@ -118,7 +119,7 @@
                         <div class="dragon-ball__btm-shadow"></div>
                     </div>
                 </div>
-        </div>
+            </div>
         </div>
     </div>
 </div>

@@ -16,8 +16,8 @@
             grid-template-areas: "a h"
                                                      "a c"
                                                      "a f";
-            height: calc(50vh - 2em);
-            width: calc(50vw - 2em); /* not necessary, but just to be explicit */
+            height: calc(35vh - -2em);
+            width: calc(45vw - 17em); /* not necessary, but just to be explicit */
             margin: 1em;
         }
     </style>
@@ -27,106 +27,166 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
-    {% if posts %}
-          <div>
-              <table  class="table">
-                  <thead>
-                  <tr>
-                      <th scope="col">category</th>
-                      <th scope="col">name</th>
-                      <th scope="col">imgsrc</th>
-                      <th scope="col">현재가</th>
-                      <th scope="col">최저가</th>
-                      <th scope="col">구독하기</th>
-                      <th scope="col">차트</th>
-                  </tr>
-                  </thead>
-        {% for post in posts %}
-                  <tr>
-                      <td>{{ post.category }}</td>
-                      <td>{{ post.name }}</td>
-                      <td>
-                          {% if post.imgsrc %}
-                            <img src="{% get_media_prefix %}{{ post.imgsrc }}" class="img-fluid"/>
-                          {% else %}
-                            <img src="{% get_media_prefix %}/noimage.png" class="img-fluid"/>
-                          {% endif %}
-                      </td>
-                      <td>{{ post.price|intcomma }}</td>
-                      <td>{{ post.Low_price|intcomma  }}</td>
-                      <td><a class="post-meta" href="/like/{{ post.id }}?page={{ posts.in_page }}">
-                                {% if request.user in post.like.all %}
-                                <spen id="like_count">{{ post.like.count }}</spen>
-                                {% else %}
-                                <spen id="like_count">{{ post.like.count }}</spen>
-                                {% endif %}
-                            </a>
-                      </td>
-                      <td>
-                        {% if post.week_prices %}
-                         <div class="grid">
-                            <canvas id="chart_{{post.id}}"></canvas>
-                            <script>
-                            const labels_{{post.id}} = [ {% for week_price in post.week_prices %}'{{ week_price.time_w }}',{% endfor %}];
-                            const data_{{post.id}} = {
-                                labels: labels_{{post.id}},
-                                datasets: [{ label: 'product_{{post.id}}',backgroundColor: 'rgb(255, 99, 132)',borderColor: 'rgb(255, 99, 132)',
-                                data: [{% for week_price in post.week_prices %} {{ week_price.value }},{% endfor %}],}]
-                            };
-                            const config_{{post.id}} = { type: 'line',data: data_{{post.id}},
-                            options: {
-                                responsive : true,
-                                plugins: { legend: { display: false   } } }
-                            };
-                            const chart_{{post.id}} = new Chart(document.getElementById('chart_{{post.id}}'),config_{{post.id}});
-                            </script>
-                          </div>
-                          {% endif %}
-                      </td>
-                  </tr>
+{% if posts %}
+<!--<div class="container-fluid d-flex justify-content-center">
+    <table  class="table">
+        <thead>
+        <tr>
+            <th class="list-th-col" scope="col">name</th>
+            <th class="list-th-col" scope="col">imgsrc</th>
+            <th class="list-th-col" scope="col">현재가</th>
+            <th class="list-th-col" scope="col">최저가</th>
+            <th class="list-th-col" scope="col">구독하기</th>
+            <th class="list-th-col" scope="col">차트</th>
+        </tr>
+        </thead>
+{% for post in posts %}
+        <tr>
+            <td class="list-td-namearea">{{ post.name }}</td>
+            <td class="list-td-imgarea">
+                {% if post.imgsrc %}
+                  <img src="{% get_media_prefix %}{{ post.imgsrc }}" class="img-fluid"/>
+                {% else %}
+                  <img src="{% get_media_prefix %}/noimage.png" class="img-fluid"/>
+                {% endif %}
+            </td>
+            <td>{{ post.price|intcomma }}</td>
+            <td>{{ post.Low_price|intcomma  }}</td>
+            <td><a class="post-meta" href="/like/{{ post.id }}?page={{ posts.in_page }}">
+                      {% if request.user in post.like.all %}
+                      <spen id="like_count">{{ post.like.count }}</spen>
+                      {% else %}
+                      <spen id="like_count">{{ post.like.count }}</spen>
+                      {% endif %}
+                  </a>
+            </td>
+            <td>
+              {% if post.week_prices %}
+               <div class="grid list-chart-scale ">
+                  <canvas id="chart_{{post.id}}"></canvas>
+                  <script>
+                  const labels_{{post.id}} = [ {% for week_price in post.week_prices %}'{{ week_price.time_w }}',{% endfor %}];
+                  const data_{{post.id}} = {
+                      labels: labels_{{post.id}},
+                      datasets: [{ label: 'product_{{post.id}}',backgroundColor: 'rgb(255, 99, 132)',borderColor: 'rgb(255, 99, 132)',
+                      data: [{% for week_price in post.week_prices %} {{ week_price.value }},{% endfor %}],}]
+                  };
+                  const config_{{post.id}} = { type: 'line',data: data_{{post.id}},
+                  options: {
+                      responsive : true,
+                      plugins: { legend: { display: false   } } }
+                  };
+                  const chart_{{post.id}} = new Chart(document.getElementById('chart_{{post.id}}'),config_{{post.id}});
+                  </script>
+                </div>
+                {% endif %}
+            </td>
+        </tr>
+{% endfor %}
+  </table>
+
+</div>-->
+<!--테스트 시작부분-->
+<div class="table-responsive">
+    <table  class="table">
+        <thead>
+        <tr>
+            <th class="list-th-col" scope="col">name</th>
+            <th class="list-th-col" scope="col">imgsrc</th>
+            <th class="list-th-col" scope="col">현재가</th>
+            <th class="list-th-col" scope="col">최저가</th>
+            <th class="list-th-col" scope="col">구독하기</th>
+            <th class="list-th-col" scope="col">차트</th>
+        </tr>
+        </thead>
+{% for post in posts %}
+        <tr>
+            <td class="list-td-namearea">{{ post.name }}</td>
+            <td class="list-td-imgarea">
+                {% if post.imgsrc %}
+                  <img src="{% get_media_prefix %}{{ post.imgsrc }}" class="img-fluid"/>
+                {% else %}
+                  <img src="{% get_media_prefix %}/noimage.png" class="img-fluid"/>
+                {% endif %}
+            </td>
+            <td>{{ post.price|intcomma }}</td>
+            <td>{{ post.Low_price|intcomma  }}</td>
+            <td><a class="post-meta" href="/like/{{ post.id }}?page={{ posts.in_page }}">
+                      {% if request.user in post.like.all %}
+                      <spen id="like_count">{{ post.like.count }}</spen>
+                      {% else %}
+                      <spen id="like_count">{{ post.like.count }}</spen>
+                      {% endif %}
+                  </a>
+            </td>
+            <td>
+              {% if post.week_prices %}
+               <div class="grid list-chart-scale ">
+                  <canvas id="chart_{{post.id}}"></canvas>
+                  <script>
+                  const labels_{{post.id}} = [ {% for week_price in post.week_prices %}'{{ week_price.time_w }}',{% endfor %}];
+                  const data_{{post.id}} = {
+                      labels: labels_{{post.id}},
+                      datasets: [{ label: 'product_{{post.id}}',backgroundColor: 'rgb(255, 99, 132)',borderColor: 'rgb(255, 99, 132)',
+                      data: [{% for week_price in post.week_prices %} {{ week_price.value }},{% endfor %}],}]
+                  };
+                  const config_{{post.id}} = { type: 'line',data: data_{{post.id}},
+                  options: {
+                      responsive : true,
+                      plugins: { legend: { display: false   } } }
+                  };
+                  const chart_{{post.id}} = new Chart(document.getElementById('chart_{{post.id}}'),config_{{post.id}});
+                  </script>
+                </div>
+                {% endif %}
+            </td>
+        </tr>
+{% endfor %}
+  </table>
+
+</div>
+<!--테스트 끝부분-->
+
+<!-- 페이징처리 시작 -->
+<div id="paging">
+    <ul class="pagination justify-content-center" style="margin-top: 2rem;">
+        <!-- 이전페이지 -->
+        {% if posts.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="/list/{{ posts.category }}?page={{ posts.previous_page_number }}">이전</a>
+            <!-- href로 뎁스 설정 -->
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in posts.paginator.page_range %}
+        {% if page_number == posts.number %}
+        <li class="page-item active" aria-current="page">
+            <a class="page-link" href="/list/{{ posts.category }}?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link" href="/list/{{ posts.category }}?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% endif %}
         {% endfor %}
-            </table>
-    <!-- 페이징처리 시작 -->
-    <div id="paging">
-        <ul class="pagination justify-content-center" style="margin-top: 2rem;">
-            <!-- 이전페이지 -->
-            {% if posts.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="/list/{{ posts.category }}?page={{ posts.previous_page_number }}">이전</a>
-                <!-- href로 뎁스 설정 -->
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-            </li>
-            {% endif %}
-            <!-- 페이지리스트 -->
-            {% for page_number in posts.paginator.page_range %}
-            {% if page_number == posts.number %}
-            <li class="page-item active" aria-current="page">
-                <a class="page-link" href="/list/{{ posts.category }}?page={{ page_number }}">{{ page_number }}</a>
-            </li>
-            {% else %}
-            <li class="page-item">
-                <a class="page-link" href="/list/{{ posts.category }}?page={{ page_number }}">{{ page_number }}</a>
-            </li>
-            {% endif %}
-            {% endfor %}
-            <!-- 다음페이지 -->
-            {% if posts.has_next %}
-            <li class="page-item">
-                <a class="page-link" href="/list/{{ posts.category }}?page={{ posts.next_page_number }}">다음</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
-    <!-- 페이징처리 끝 -->
-          </div>
-    {% endif %}
+        <!-- 다음페이지 -->
+        {% if posts.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="/list/{{ posts.category }}?page={{ posts.next_page_number }}">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+<!-- 페이징처리 끝 -->
+{% endif %}
 {% include "footer.html" %}
 </body>
 </html>

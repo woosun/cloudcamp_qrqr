@@ -3,101 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <title>나의 드래곤볼</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     {% include "base.html" %}
 </head>
 <body>
-    {% include "top.html" %}
+{% include "top.html" %}
 {% load static %}
 {% block content %}
-    {% if lists %}
-    <div class="canvas">
-        <div class="radar">
-            <div class="up"></div>
-            <div class="down"></div>
-            <div class="left"></div>
-            <div class="right"></div>
+{% if lists %}
 
-        {% for star in stars %}
-                <div class="ball-1" style="top: {{ list_for_random | random }}%; left: {{ list_for_random | random }}%"></div>
-        {% endfor %}
+<div class="container-fluid d-flex justify-content-center " style="margin-top: 70px;">
+    <div class="row">
+        <div class="col-12" style="">
+            <div class="row wrapper justify-content-center">
+                <!--나의 구독페이지 정보시작 -->
+                {% for list in lists %}
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 myguduck-div-title myguduck-div-imgarea" style="">
+                    <a class="post-meta" href="/unlike/{{ list.pid.id }}?page={{ lists.in_page }}">
+                        <span id="like_count">
+                            <button type="button" class="btn btn-outline-danger myguduck-btn-cancel">해지하기
+                        </button>
+                        </span>
+                    </a>
+                    <!--상품이미지 db에서 가져오는부분 시작-->
+                    <!--                    {% if list.pid.imgsrc %}-->
+                    <!--                    <img src="{% get_media_prefix %}{{ list.pid.imgsrc }}" class="img-fluid"/>-->
+                    <!--                    {% else %}-->
+                    <!--                    <img src="{% get_media_prefix %}/noimage.png" class="img-fluid"/>-->
+                    <!--                    {% endif %}-->
+                    <!--상품이미지 db에서 가져오는 부분 끝-->
+                    <img class="myguduck-img-thumbnail" src="/static/img/img-dragonball-cpu.png">
+                    <div class="myguduck-div-name" style=""><h5 class="myguduck-h5-thumbnail">{{ list.pid.name }}</h5>
+                    </div>
+                    <h5 class="myguduck-h5-guduckdate">구독일자</h5>
+                    <p class="myguduck-p-guduckdate">{{ list.create_date }}</p>
+                </div>
+                {% endfor %}
+                <!--나의 구독페이지 정보 끝-->
+            </div>
         </div>
     </div>
-          <div>
-              <table  class="table">
-                  <thead>
-                  <tr>
-                      <th scope="col">순번</th>
-                      <th scope="col">카테고리</th>
-                      <th scope="col">상품명</th>
-                      <th scope="col">이미지</th>
-                      <th scope="col">구독일자</th>
-                      <th scope="col">해지하기</th>
-                   </tr>
-                  </thead>
-        {% for list in lists %}
-                  <tr>
-                      <td>{{ list.id }}</td>
-                      <td>{{ list.pid.category }}</td>
-                      <td>{{ list.pid.name }}</td>
-                      <td>
-                          {% if list.pid.imgsrc %}
-                            <img src="{% get_media_prefix %}{{ list.pid.imgsrc }}" class="img-fluid"/>
-                          {% else %}
-                            <img src="{% get_media_prefix %}/noimage.png" class="img-fluid"/>
-                          {% endif %}
-                      </td>
-                       <td>{{ list.create_date }}</td>
-                      <td>
-                          <a class="post-meta" href="/unlike/{{ list.pid.id }}?page={{ lists.in_page }}">
-                              <spen id="like_count">해지하기</spen>
-                          </a>
-                      </td>
-                  </tr>
+</div>
+</div>
+
+
+<!--레이아웃 끝-->
+
+<!-- 페이징처리 시작 -->
+<div id="paging">
+    <ul class="pagination justify-content-center" style="margin-top: 2rem;">
+        <!-- 이전페이지 -->
+        {% if lists.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="/myguduck/?page={{ lists.previous_page_number }}">이전</a>
+            <!-- href로 뎁스 설정 -->
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in lists.paginator.page_range %}
+        {% if page_number == lists.number %}
+        <li class="page-item active" aria-current="page">
+            <a class="page-link" href="/myguduck/?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link" href="/myguduck/?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% endif %}
         {% endfor %}
-            </table>
-    <!-- 페이징처리 시작 -->
-    <div id="paging">
-        <ul class="pagination justify-content-center" style="margin-top: 2rem;">
-            <!-- 이전페이지 -->
-            {% if lists.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="/myguduck/?page={{ lists.previous_page_number }}">이전</a>
-                <!-- href로 뎁스 설정 -->
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-            </li>
-            {% endif %}
-            <!-- 페이지리스트 -->
-            {% for page_number in lists.paginator.page_range %}
-            {% if page_number == lists.number %}
-            <li class="page-item active" aria-current="page">
-                <a class="page-link" href="/myguduck/?page={{ page_number }}">{{ page_number }}</a>
-            </li>
-            {% else %}
-            <li class="page-item">
-                <a class="page-link" href="/myguduck/?page={{ page_number }}">{{ page_number }}</a>
-            </li>
-            {% endif %}
-            {% endfor %}
-            <!-- 다음페이지 -->
-            {% if lists.has_next %}
-            <li class="page-item">
-                <a class="page-link" href="/myguduck/?page={{ lists.next_page_number }}">다음</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
-    <!-- 페이징처리 끝 -->
-          </div>
-    {% else %}
-    <h1 class="display-6"> 구독내역이 없습니다. </h1>
-    {% endif %}
+        <!-- 다음페이지 -->
+        {% if lists.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="/myguduck/?page={{ lists.next_page_number }}">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+<!-- 페이징처리 끝 -->
+</div>
+{% else %}
+<h1 class="display-6"> 구독내역이 없습니다. </h1>
+{% endif %}
 {% include "footer.html" %}
 </body>
 </html>
