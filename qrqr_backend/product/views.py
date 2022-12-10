@@ -9,8 +9,9 @@ import datetime
 
 bucket = "qrqr"
 org = "qrqr"
-token = "DJFvAGHanKa1AUci8PLbzrhm1UPjayh5Re5ulyFCvx4BVVt8JQVi0rdw0jiwPHAlKLAq1l4N-4DcZR0i8oun2w=="
-url="http://oud.kr:8086"
+token = "2irOyzkQH5eqMd7CNGRnfiZxacktP3_d6kvgqR181xC4E3LBZVusYYodYrCLwjMr56ebzr2fc-4EcpwRYq-r9Q=="
+#url="http://10.10.2.222:8086"
+url="http://3.34.200.195:8086"
 @login_required(login_url='/login') #게시글 작성 및 수정 삭제 모두 list 페이지에서 이루어 지므로 모두 list페이지로 보낸다.
 def prog(request, type):
     print("타입없음에러")
