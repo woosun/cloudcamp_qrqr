@@ -4,14 +4,22 @@ from django.contrib.auth.decorators import login_required
 from guduck.models import guduck
 from django.core.paginator import Paginator
 import influxdb_client
+import os
 import json
 import datetime
+from pathlib import Path
 
-bucket = "qrqr"
-org = "qrqr"
-token = "2irOyzkQH5eqMd7CNGRnfiZxacktP3_d6kvgqR181xC4E3LBZVusYYodYrCLwjMr56ebzr2fc-4EcpwRYq-r9Q=="
-#url="http://10.10.2.222:8086"
-url="http://3.34.200.195:8086"
+BASE_DIR = Path(__file__).resolve().parent.parent
+secret_file = os.path.join(BASE_DIR, 'secret.json')
+
+with open(secret_file) as f:
+    secrets = json.loads(f.read())
+
+
+bucket = secrets['bucket']
+org = secrets['org']
+token = secrets['token']
+url=secrets['url']
 @login_required(login_url='/login') #게시글 작성 및 수정 삭제 모두 list 페이지에서 이루어 지므로 모두 list페이지로 보낸다.
 def prog(request, type):
     print("타입없음에러")
