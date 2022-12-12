@@ -19,7 +19,7 @@ body {
   border: gray solid 10px;
   background-size: 20px 20px;
   left:25%;
-  top:23%;
+  top:14%;
   background-image: linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px);
 }
 .radar:after {

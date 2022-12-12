@@ -1,3 +1,34 @@
-.list-chart-scale { width:400px; height:200px; display: block;}
-.list-td-imgarea { width:400px; height:200px; }
-.list-td-namearea { width:400px; height:200px; }
+body{ font-family: 'Noto Sans KR', sans-serif; font-size: 10pt; }
+        .grid {
+            display: grid;
+    gap: 1em;
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+        "a h"
+        "a c"
+        "a f";
+    height: 200px;
+    width: 400px;
+    margin-right: 0em;
+        }
+
+        .myguduck-div-imgarea{ max-width:200px; max-height:200px; }
+        .list-img-thumnail { max-width:180px; max-height:180px; }
+        @media (max-width: 875px) {
+  .grid { height: 200px; width: 300px; }
+  .myguduck-div-imgarea{  height: 100px; max-width: 100px; }
+  .list-img-thumnail{  max-height: 80px; max-width: 80px; }
+  tr .list-tr{ height: 200px; width:65px;  text-overflow: ellipsis; overflow:hidden; padding-btm:0px;}
+  .list-tr td{ padding-bottom:0px;}
+  canvas { margin-top: 20px; }
+}
+
+@media (max-width: 680px) {
+  .grid { height: 145px; width: 165px; }
+  .myguduck-div-imgarea{  height: 50px; max-width: 50px; }
+  .list-img-thumnail{  max-height: 40px; max-width: 40px; }
+  tr .list-tr{ height: 50px; width:33px;  text-overflow: ellipsis; overflow:hidden; padding-btm:0px;}
+  .list-tr td{ padding-bottom:0px;}
+  canvas { margin-top: 40px; }
+}

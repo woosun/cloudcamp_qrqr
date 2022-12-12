@@ -118,7 +118,7 @@ scroll: no;
 
 .myguduck-div-imgarea { width:200px; height:150px; display:table-cell; vertical-align:middle; border: solid 1px #7777774a; border-radius: 10%; margin: 5px 5px 5px 5px; }
 
-.myguduck-img-thumbnail {  max-width:180px; max-height:80px; }
+.myguduck-img-thumbnail {  max-width:150px; max-height:80px; }
 
 .myguduck-h5-thumbnail { font-family: 'Noto Sans KR', sans-serif; font-size: 10pt; font-weight:600; }
 
@@ -129,5 +129,3 @@ scroll: no;
 .myguduck-btn-cancel { font-size: 6pt; padding: 2px 2px 2px 2px ; position: absolute; z-index:9999; margin-top: 5px; margin-left:85px; }
 
 .myguduck-div-name { height: 35px; overflow: hidden;}
-
-.list-th-col { white-space : nowrap; }
