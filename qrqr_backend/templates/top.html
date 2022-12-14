@@ -1,77 +1,51 @@
 {% load static %}
-{% if user.is_authenticated %}
-<nav class="sb-topnav navbar navbar-expand navbar-light d-flex justify-content-between"
-     style="background-color: #ffc12f;">
-    <!-- Navbar Brand-->
+<style>
+    .nav-item { padding : .5rem .5rem }
+</style>
+<nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #ffc12f;">
+<div class="container-fluid">
     <a class="navbar-brand ps-3 nav-font" href="/">찾아라 드래곤볼</a>
-    <!-- Navbar Search-->
-    <div class="" style="">
-        <table class="table top-category">
-            <thead class="top-thead-border">
-            <tr>
-                <th scope="col" style="border: none;"><a class="top-category-a"
-                                                         href="{% url 'list' category=1 %}">cpu</a></th>
-                <th scope="col" style="border: none;"><a class="top-category-a" href="{% url 'list' category=3 %}">램</a>
-                </th>
-                <th scope="col" style="border: none;"><a class="top-category-a"
-                                                         href="{% url 'list' category=2 %}">메인보드</a></th>
-                <th scope="col" style="border: none;"><a class="top-category-a"
-                                                         href="{% url 'list' category=4 %}">SSD</a></th>
-                <th scope="col" style="border: none;"><a class="top-category-a"
-                                                         href="{% url 'list' category=5 %}">그래픽카드</a></th>
-                <th scope="col" style="border: none;"><a class="top-category-a"
-                                                         href="{% url 'list' category=6 %}">파워</a></th>
-            </tr>
-            </thead>
-        </table>
-    </div>
-    <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4" style="">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-               aria-expanded="false" style="font-size:17px"><strong>{{user.username}}</strong>&nbsp&nbsp</a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/mypage/">마이페이지</a></li>
-                <li><a class="dropdown-item" href="/myguduck/">나의 구독</a></li>
-                <li>
-                    <hr class="dropdown-divider"/>
-                </li>
-                <button class="btn btn-danger" style="text-align:center; width:100%"
-                        onclick="location.href = '{% url 'logout' %}'"> 로그아웃
-                </button>
-            </ul>
-        </li>
-    </ul>
-</nav>
-{% else %}
-<nav class="sb-topnav navbar navbar-expand navbar-light d-flex justify-content-between"
-     style="background-color: #ffc12f;">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3 nav-font" href="/">찾아라 드래곤볼</a>
-    <div class="" style="">
-        <table class="table top-category">
-            <thead class="top-thead-border">
-            <tr>
-                <th scope="col" style="border: none;"><a class="top-category-a"
-                                                         href="{% url 'list' category=1 %}">cpu</a></th>
-                <th scope="col" style="border: none;"><a class="top-category-a"
-                                                         href="{% url 'list' category=2 %}">메인보드</a></th>
-                <th scope="col" style="border: none;"><a class="top-category-a" href="{% url 'list' category=3 %}">램</a>
-                </th>
-                <th scope="col" style="border: none;"><a class="top-category-a"
-                                                         href="{% url 'list' category=4 %}">SSD</a></th>
-                <th scope="col" style="border: none;"><a class="top-category-a"
-                                                         href="{% url 'list' category=5 %}">그래픽카드</a></th>
-                <th scope="col" style="border: none;"><a class="top-category-a"
-                                                         href="{% url 'list' category=6 %}">파워</a></th>
-            </tr>
-            </thead>
-        </table>
-    </div>
-    <!-- Navbar-->
-    <button class="btn btn-primary ms-auto ms-md-0 me-3 me-lg-4 "
-            style="text-align:center; background-color:#198754; border:none;"
-            onclick="location.href = '{% url 'login' %}'"> 로그인 하러가기
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="collapse navbar-collapse justify-content-between" style="background-color: #ffc12f;" id="navbarSupportedContent">
+        <ul class="navbar-nav navbar-collapse justify-content-center">
+            <li class="nav-item">
+                <a class="top-category-a" href="{% url 'list' category=1 %}">cpu</a>
+            </li>
+            <li class="nav-item">
+                <a class="top-category-a" href="{% url 'list' category=3 %}">램</a>
+            </li>
+            <li class="nav-item">
+                <a class="top-category-a" href="{% url 'list' category=2 %}">메인보드</a>
+            </li>
+            <li class="nav-item">
+                <a class="top-category-a" href="{% url 'list' category=4 %}">SSD</a>
+            </li>
+            <li class="nav-item">
+                <a class="top-category-a" href="{% url 'list' category=5 %}">그래픽카드</a>
+            </li>
+            <li class="nav-item">
+                <a class="top-category-a" href="{% url 'list' category=6 %}">파워</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav navbar-collapse justify-content-center">
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:17px"><strong>{{user.username}}</strong>&nbsp&nbsp</a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/mypage/">마이페이지</a></li>
+                    <li><a class="dropdown-item" href="/myguduck/">나의 구독</a></li>
+                    <li><hr class="dropdown-divider"/></li>
+                    <button class="btn btn-danger" style="text-align:center; width:100%" onclick="location.href = '{% url 'logout' %}'"> 로그아웃</button>
+                </ul>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <button class="btn btn-primary ms-auto ms-md-0 me-3 me-lg-4 " style="text-align:center; background-color:#198754; border:none;"  onclick="location.href = '{% url 'login' %}'"> 로그인 하러가기 </button>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
 </nav>
-{% endif %}
