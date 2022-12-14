@@ -13,6 +13,7 @@ from guduck.models import guduck
 
 def signup(request):
     print('회원가입호출')
+    check = "none"
     if request.method == 'POST':
         signupForm = cSignupForm(request.POST)
         if signupForm.is_valid():
@@ -23,9 +24,11 @@ def signup(request):
             # login(request, user)
             print('회원가입성공')
             return redirect('/')
+        else:
+            return render(request, 'user/signUp.html', {'signupForm': signupForm})
     else:
         signupForm = cSignupForm()
-    return render(request,'user/signUp.html',{'signupForm':signupForm})
+    return render(request,'user/signUp.html',{'signupForm':signupForm, 'checkError' : check})
 
 
 def login(request):

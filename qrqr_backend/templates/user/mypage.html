@@ -6,7 +6,6 @@
     {% load static %}
     {% include "base.html" %}
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <link rel="stylesheet" href="{% static 'style.css'%}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -63,13 +62,13 @@
                     </table>
                     <!--마이페이지 처리 이곳은 내정보 끝-->
                 </div>
-                <div class="col-3 col-md-3 col-xl-3 col-lg-3 col-sm-3 mypage-div-rader d-flex justify-content-center" style="">
+                <div class="col-6 col-md-3 col-xl-3 col-lg-3 col-sm-6 mypage-div-rader d-flex justify-content-center" style="">
                     <!--구독 상품 위치 추척기-->
                     <h1 class="mypage-bold mypage-text-center">구독상품 위치추적기</h1>
                     {% if stars %}
-                    <div class="canvas mypage-rader">
+                    <div class="canvas mypage-rader" style="position: absolute;">
                         <a href="/myguduck/?page=1">
-                            <div class="radar">
+                            <div class="radar" style="min-width: 350px;min-height: 350px;">
                                 <div class="up"></div>
                                 <div class="down"></div>
                                 <div class="left"></div>

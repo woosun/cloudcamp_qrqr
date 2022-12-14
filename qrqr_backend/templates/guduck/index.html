@@ -5,7 +5,7 @@
     <title>나의 드래곤볼</title>
     {% load static %}
     {% include "base.html" %}
-    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
 {% include "top.html" %}
@@ -89,10 +89,11 @@
 <!-- 페이징처리 끝 -->
 </div>
 {% else %}
-<h1 class="display-6"> 구독내역이 없습니다. </h1>
+<div class="container-fluid d-flex justify-content-center " style="margin-top: 70px;">
+<h4 class=""> 구독내역이 없습니다. </h4>
+</div>
 {% endif %}
 {% include "footer.html" %}
 </body>
 </html>
 {% endblock %}
-{% include "footer.html" %}

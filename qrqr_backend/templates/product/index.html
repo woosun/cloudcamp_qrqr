@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>드래곤볼 리스트</title>
     {% include "base.html" %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'list-style.css'%}">
+    <link rel="stylesheet" href="{% static 'list-style.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+    </style>
 </head>
 <body>
 {% include "top.html" %}
@@ -18,12 +19,12 @@
     <table class="table">
         <thead>
         <tr style="white-space: nowrap;">
-            <th class="col-1 col-sm-1" scope="col">name</th>
-            <th class="col-1 col-sm-1" scope="col">imgsrc</th>
-            <th class="col-1 col-sm-1" scope="col">현재가</th>
-            <th class="col-1 col-sm-1" scope="col">최저가</th>
-            <th class="col-1 col-sm-1" scope="col">구독하기</th>
-            <th class="col-1 col-sm-1" scope="col">차트</th>
+            <th class="col-1 col-sm-1 col-md-2" scope="col">name</th>
+            <th class="col-1 col-sm-1 col-md-2" scope="col">imgsrc</th>
+            <th class="col-1 col-sm-1 col-md-1" scope="col">현재가</th>
+            <th class="col-1 col-sm-1 col-md-1" scope="col">최저가</th>
+            <th class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1" scope="col">구독하기</th>
+            <th class="col-1 col-sm-1 col-md-1" scope="col">차트</th>
         </tr>
         </thead>
         {% for post in posts %}
@@ -38,16 +39,20 @@
                     {% endif %}
                 </div>
             </td>
-            <td>{{ post.price|intcomma }}</td>
-            <td>{{ post.Low_price|intcomma }}</td>
+            <td><p class="animate__fadeInDown price">{{ post.price|intcomma }}</p></td>
+            <td><p class="animate__fadeInDown Low_price">{{ post.Low_price|intcomma }}</td>
             <td>
-                <a class="post-meta" href="/like/{{ post.id }}?page={{ posts.in_page }}">
-                    {% if request.user in post.like.all %}
-                    <spen id="like_count">{{ post.like.count }}</spen>
-                    {% else %}
-                    <spen id="like_count">{{ post.like.count }}</spen>
-                    {% endif %}
-                </a>
+                <div class="budgecard">
+                    <a href="/like/{{ post.id }}?page={{ posts.in_page }}" class="notification post-meta">
+                        {% if request.user in post.like.all %}
+                        <i class="fa-solid fa-bell"></i>
+                        <span id="like_count" class="badge animate__fadeInDown like_count_style">{{ post.like.count }}</span>
+                        {% else %}
+                        <i class="fa-solid fa-bell"></i>
+                        <spen id="like_count" class="badge animate__fadeInDown like_count_style">{{ post.like.count }}</spen>
+                        {% endif %}
+                    </a>
+                </div>
             </td>
             <td class="">
                 {% if post.week_prices %}
