@@ -5,7 +5,9 @@ from django.conf import settings
 import user.views
 import product.views
 import guduck.views
+
 app_name = 'guduck'
+
 urlpatterns = [
     #어드민
     path('admin/', admin.site.urls),

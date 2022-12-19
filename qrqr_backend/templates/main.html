@@ -18,7 +18,7 @@
                     <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
                         <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=1 %}" type=""
                            style="">
-                            <img src="https://qrqr-static.s3.ap-northeast-2.amazonaws.com/static/img/img-dragonball-cpu.png" class="img-dragonball-cpu"/>
+                            <img src="{% static 'img/img-dragonball-cpu.png'%}" class="img-dragonball-cpu"/>
                             cpu 보러가기</a>
                         <div class="dragon-ball__oval-shadow"></div>
                         <div class="dragon-ball__1star-container">
@@ -31,7 +31,7 @@
                     <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
                         <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=3 %}" type=""
                            style="">
-                            <img class="img-dragonball-ram" src="https://qrqr-static.s3.ap-northeast-2.amazonaws.com/static/img/img-dragonball-ram.png" style="">
+                            <img class="img-dragonball-ram" src="{% static 'img/img-dragonball-ram.png'%}" style="">
                             램 보러가기</a>
                         <div class="dragon-ball__oval-shadow"></div>
                         <div class="dragon-ball__2star-container">
@@ -47,7 +47,7 @@
 
                         <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=2 %}" type=""
                            style="position: absolute; z-index: 9999;">
-                            <img class="img-dragonball-mainboard" src="https://qrqr-static.s3.ap-northeast-2.amazonaws.com/static/img/img-dragonball-mainboard.png"
+                            <img class="img-dragonball-mainboard" src="{% static 'img/img-dragonball-mainboard.png'%}"
                                  style="">
                             메인보드 보러가기
                         </a>
@@ -66,7 +66,7 @@
 
                         <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=4 %}" type=""
                            style="position: absolute; z-index: 9999;">
-                            <img class="img-dragonball-ssd" src="https://qrqr-static.s3.ap-northeast-2.amazonaws.com/static/img/img-dragonball-ssd.png" style="">
+                            <img class="img-dragonball-ssd" src="{% static 'img/img-dragonball-ssd.png'%}" style="">
                             SSD 보러가기
                         </a>
 
@@ -84,7 +84,7 @@
                     <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
                         <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=5 %}" type=""
                            style="position: absolute; z-index: 9999;">
-                            <img class="img-dragonball-gpu" src="https://qrqr-static.s3.ap-northeast-2.amazonaws.com/static/img/img-dragonball-gpu.png" style="">
+                            <img class="img-dragonball-gpu" src="{% static 'img/img-dragonball-gpu.png'%}" style="">
                             GPU 보러가기
                         </a>
 
@@ -103,7 +103,7 @@
                     <div class="dragon-ball main-btn-margin main-btn-margin" style="margin-top:1rem;">
                         <a class="main-dragonball-text" aria-disabled="true" href="{% url 'list' category=6 %}" type=""
                            style="position: absolute; z-index: 9999;">
-                            <img class="img-dragonball-power" src="https://qrqr-static.s3.ap-northeast-2.amazonaws.com/static/img/img-dragonball-power.png" style="">
+                            <img class="img-dragonball-power" src="{% static 'img/img-dragonball-power.png'%}" style="">
                             파워 보러가기
                         </a>
                         <div class="dragon-ball__oval-shadow"></div>

@@ -5,10 +5,7 @@ import os
 import json
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 pymysql.install_as_MySQLdb()
-
 LOGIN_REDIRECT_URL = '/'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'product',
-    'storages',
+#    'storages',
     'guduck',
     'user',
     'push',
