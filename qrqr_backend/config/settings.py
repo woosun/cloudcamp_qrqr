@@ -3,15 +3,15 @@ from pathlib import Path
 import pymysql
 import os
 import json
-pymysql.install_as_MySQLdb()
 
-LOGIN_REDIRECT_URL = 'index.html'
+BASE_DIR = Path(__file__).resolve().parent.parent
+pymysql.install_as_MySQLdb()
+LOGIN_REDIRECT_URL = '/'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-secret_file = os.path.join(BASE_DIR, 'scret.json')
+secret_file = os.path.join(BASE_DIR, 'secret.json')
 
 with open(secret_file) as f:
     secrets = json.loads(f.read())
@@ -32,7 +32,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'product',
+#    'storages',
     'guduck',
     'user',
     'push',
@@ -123,6 +125,21 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+
+
+# AWS Setting
+
+#AWS_STORAGE_BUCKET_NAME = 'qrqr-static'
+#AWS_QUERYSTRING_AUTH = False
+#AWS_S3_HOST = 's3.%s.amazonaws.com' % secrets['AWS_REGION']
+#AWS_ACCESS_KEY_ID = secrets['AWS_ACCESS_KEY_ID']
+#AWS_SECRET_ACCESS_KEY = secrets['AWS_SECRET_ACCESS_KEY']
+#AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+#AWS_DEFAULT_ACL = 'public-read'
+#AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
+#MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
@@ -133,7 +150,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, '.static_root')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT =  os.path.join(BASE_DIR,'media')
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

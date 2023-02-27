@@ -1,5 +1,6 @@
 from django.db import models
 from guduck.models import guduck
+
 # Create your models here.
 class push(models.Model):
     gid = models.ForeignKey(guduck,on_delete=models.CASCADE) #구독

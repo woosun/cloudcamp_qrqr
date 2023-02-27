@@ -1,0 +1,92 @@
+.budgecard {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f4f4;
+  height: 60px;
+  width: 60px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+  border-radius: 10px;
+}
+
+.notification i {
+    font-size:32px;
+    color: #da8282;
+}
+.notification i:hover {
+    color: #e01a1a;
+    transition:0.5s;
+}
+.notification .badge {
+  right: -10px;
+  position: absolute;
+  top: -10px;
+  background-color: #a52a2a;
+  height: 30px;
+  border-radius: 50px;
+  display: grid;
+  place-items: center;
+  color: #f4f4f4;
+  width: 30px;
+}
+body{ font-family: 'Noto Sans KR', sans-serif; font-weight:600; font-size:9pt }
+        .grid {
+            display: grid;
+    gap: 1em;
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+        "a h"
+        "a c"
+        "a f";
+    height: 200px;
+    width: 400px;
+    margin-right: 0em;
+        }
+
+        .myguduck-div-imgarea{ max-width:200px; max-height:200px; }
+        .list-img-thumnail { max-width:180px; max-height:180px; }
+        @media (max-width: 875px) {
+  .grid { height: 200px; width: 300px; }
+  .myguduck-div-imgarea{  height: 100px; max-width: 100px; }
+  .list-img-thumnail{  max-height: 80px; max-width: 80px; }
+  tr .list-tr{ height: 200px; width:65px;  text-overflow: ellipsis; overflow:hidden; padding-btm:0px;}
+  .list-tr td{ padding-bottom:0px;}
+  canvas { margin-top: 20px; }
+}
+
+@media (max-width: 680px) {
+  .grid { height: 145px; width: 165px; }
+  .myguduck-div-imgarea{  height: 145px; max-width: 50px; }
+  .list-img-thumnail{  max-height: 40px; max-width: 40px; }
+  tr .list-tr{ height: 50px; width:33px;  text-overflow: ellipsis; overflow:hidden; padding-btm:0px;}
+  .list-tr td{ padding-bottom:0px;}
+  canvas { margin-top: 40px; }
+}
+
+.price{
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: fadeInDown;
+  animation-duration: 1.2s;
+        }
+.Low_price{
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: fadeInDown;
+  animation-duration: 1.5s;
+}
+
+.like_count_style {
+  display: inline-block;
+  margin: 0 0.2rem;
+
+  animation: fadeInDown;
+  animation-duration: 1.8s;
+   }

@@ -1,0 +1,350 @@
+.wrapper, html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-color{
+ background-color: #198754;;
+}
+/*드래곤볼 사이즈 변경*/
+:root {
+  font-size: 10px;
+}
+@media screen and (max-width: 1220px) {
+  :root {
+    font-size: 10px ;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.dragon-ball {
+  height: 18rem;
+  width: 18rem;
+  background: #FAB637;
+  border-radius: 100%;
+  border: 0.53em solid #FFF467;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index:10002;
+}
+
+.dragon-ball:before, .dragon-ball:after {
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+  background: transparent;
+  z-index: 100;
+}
+.dragon-ball:before {
+  top: -1.1em;
+  right: 0;
+  height: 15.6em;
+  width: 14.45em;
+  box-shadow: -3em 0em 1em 1em #F8A42A;
+  z-index: 50;
+}
+.dragon-ball:after {
+  top: -2.5em;
+  right: -4em;
+  height: 13.6em;
+  width: 12.45em;
+  box-shadow: -3em 0em 4em 4em #F9AE31;
+}
+.dragon-ball__oval-shadow {
+  position: absolute;
+  top: 3.1em;
+  right: 0.743em;
+  height: 3.9em;
+  width: 1.8em;
+  border-radius: 100%;
+  background: #FFF467;
+  transform: rotate(-25deg);
+  z-index: 500;
+}
+.dragon-ball__1star-container {
+  position: relative;
+  width: 2.4rem;
+  height: 0.28rem;
+  padding: 0;
+  transform: rotate(-18deg);
+  z-index: 1000;
+}
+.dragon-ball__2star-container {
+  position: relative;
+  width: -2rem;
+  height: 0.28rem;
+  padding: 0;
+  transform: rotate(-18deg);
+  z-index: 1000;
+}
+.dragon-ball__3star-container {
+  position: relative;
+  width: -2.8rem;
+  height: -2.28rem;
+  padding: 0;
+  transform: rotate(-18deg);
+  z-index: 1000;
+}
+.dragon-ball__4star-container{
+  position: relative;
+  width: -5.8rem;
+  height: 3.08rem;
+  padding: 0;
+  transform: rotate(-18deg);
+  z-index: 1000;
+}
+.dragon-ball__5star-container{
+  position: relative;
+  width: 6rem;
+  height: 5.08rem;
+  padding: 0;
+  transform: rotate(-18deg);
+  z-index: 1000;
+}
+.dragon-ball__6star-container{
+  position: relative;
+  width: 6rem;
+  height: 5.08rem;
+  padding: 0;
+  transform: rotate(-18deg);
+  z-index: 1000;
+}
+
+.dragon-ball__btm-shadow {
+  position: absolute;
+  height: 15.6em;
+  width: 18.45em;
+  top: 0;
+  right: 0;
+  border-radius: 100%;
+  background: transparent;
+  box-shadow: 0em 3em 1em 2em #a75725;
+  z-index: 200;
+}
+
+.star {
+  margin: 0;
+  position: absolute;
+  height: 0em;
+  width: 0em;
+  border-bottom: 0.8em solid #AA2A1D;
+  border-right: 1.2em solid transparent;
+  border-left: 1.2em solid transparent;
+  transform: rotate(35deg);
+}
+.star:before, .star:after {
+  content: "";
+  position: absolute;
+}
+.star:before {
+  border-bottom: 0.85em solid #AA2A1D;
+  border-right: 1.45em solid transparent;
+  border-left: 0.95em solid transparent;
+  left: -1.3em;
+  transform: rotate(-65deg);
+}
+.star:after {
+  border-bottom: 0.9em solid #AA2A1D;
+  border-right: 0.4em solid transparent;
+  border-left: 0.4em solid transparent;
+  transform: rotate(-33deg);
+  left: -0.83em;
+  top: -0.58em;
+}
+.star__top-left {
+  top: 0;
+  left: 0;
+}
+.star__top-right {
+  top: 0;
+  right: 0;
+}
+
+.star__btm-left {
+  bottom: 0;
+  left: 0;
+}
+.star__btm-right {
+  bottom: 0;
+  right: 0;
+}
+.star__btm-right6{
+   bottom: 20px;
+   right: 0;
+}
+.star__btm-left5{
+    bottom: 18px;
+    right: 17px;
+}
+.star__btm-left6{
+    bottom: 21px;
+    right: 35px;
+}
+
+
+/* Glow Animation :) */
+@-webkit-keyframes glow {
+  0% {
+    box-shadow: 0em 0em 2em 0.2em #FAB637;
+  }
+  50% {
+    box-shadow: 0em 0em 3em 0.4em #FAB637;
+  }
+  100% {
+    box-shadow: 0em 0em 2em 0.2em #FAB637;
+  }
+}
+@keyframes glow {
+  0% {
+    box-shadow: 0em 0em 2em 0.2em #FAB637;
+  }
+  50% {
+    box-shadow: 0em 0em 3em 0.4em #FAB637;
+  }
+  100% {
+    box-shadow: 0em 0em 2em 0.2em #FAB637;
+  }
+}
+.img-dragonball-cpu{
+    width:100px;
+    height:100px;
+    position: inherit;
+    bottom: 20px;
+    left: -13px;
+    z-index:10001;
+    opacity:0;
+    transition: opacity 0.5s linear;
+}
+
+.img-dragonball-ram{
+    width:100px;
+    height:100px;
+    position: inherit;
+    bottom: 18px;
+    left: -14px;
+    z-index:10001;
+    opacity:0;
+    transition: opacity 0.5s linear;
+}
+.img-dragonball-mainboard{
+    width:100px;
+    height:100px;
+    position: inherit;
+    bottom: 25px;
+    left: 0px;
+    z-index:10001;
+    opacity:0;
+    transition: opacity 0.5s linear;
+}
+
+.img-dragonball-ssd{
+    width:100px;
+    height:100px;
+    position: inherit;
+    bottom: 20px;
+    left: -17px;
+    z-index:10001;
+    opacity:0;
+    transition: opacity 0.5s linear;
+}
+
+.img-dragonball-gpu{
+    width:100px;
+    height:100px;
+    position: inherit;
+    bottom: 18px;
+    left: -12px;
+    z-index:10001;
+    opacity:0;
+    transition: opacity 0.5s linear;
+}
+
+.img-dragonball-power{
+    width:100px;
+    height:100px;
+    position: inherit;
+    bottom: 19px;
+    left: -12px;
+    z-index:10001;
+    opacity:0;
+    transition: opacity 0.5s linear;
+}
+
+.dragon-ball:hover .img-dragonball-cpu{
+    display:block;
+    opacity:0.4;
+}
+
+.dragon-ball:hover .img-dragonball-ram{
+    display:block;
+    opacity:0.4;
+}
+
+.dragon-ball:hover .img-dragonball-mainboard{
+    display:block;
+    opacity:0.4;
+}
+.dragon-ball:hover .img-dragonball-ssd{
+    display:block;
+    opacity:0.4;
+}
+.dragon-ball:hover .img-dragonball-gpu{
+    display:block;
+    opacity:0.4;
+}
+.dragon-ball:hover .img-dragonball-power{
+    display:block;
+    opacity:0.4;
+}
+
+.main-dragonball-text{
+    z-index: 9999;
+    position: absolute;
+    top: 130px;
+    font-size: 12pt;
+    color: firebrick;
+    text-decoration: none;
+    font-family: 'Poor Story', cursive;
+
+}
+.main-dragonball-text:visited{
+    text-decoration: none
+}
+
+.main-dragonball-text:hover{
+     color:firebrick; text-decoration: none;
+}
+.main-dragonball-text:link{
+     color:firebrick; text-decoration: none;
+}
+.wrapper{
+    background-color: #198754;
+}
+
+.justify-content-between{
+    background-color: #198754;
+}
+
+.row {
+    --bs-gutter-x: 0rem !important;
+}
+
+div .col-md-1{
+    width:200px;
+    height:200px;
+}
