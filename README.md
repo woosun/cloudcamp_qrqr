@@ -39,19 +39,20 @@
 
 ## 프로젝트 내용
 
-![img.png](MD.IMG/img.png)
+<img alt="img.png" src="MD.IMG/img.png"/>
 ### 기능구현 및 기능 프로세스
-![img1.png](MD.IMG/img1.png)
-![img2.png](MD.IMG/img2.png)
+<img alt="img1.png" src="MD.IMG/img1.png"/>
+<img alt="img2.png" src="MD.IMG/img2.png"/>
 ### 팀빌더 노션 및 깃허브 사용방식
 
 ### 데브옵스 CI/CD
-![17.png](MD.IMG/17.png)
-![18.png](MD.IMG/18.png)
+<img alt="17.png" src="MD.IMG/17.png"/>
+<img alt="18.png" src="MD.IMG/18.png"/>
 
 ### 클라우드 라이브서버 CI/CD
-![12.png](MD.IMG/12.png)
-![13.png](MD.IMG/13.png)
+<img alt="12.png" src="MD.IMG/12.png"/>
+<img alt="13.png" src="MD.IMG/13.png"/>
 
 ### 데브옵스 환경과 클라우드 라이브서버 환경 모니터링 시스템구축
-![20.png](MD.IMG/20.png)
+
+<img alt="20.png" src="MD.IMG/20.png"/>
