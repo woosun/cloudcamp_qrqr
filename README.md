@@ -51,7 +51,7 @@
 
 ### 클라우드 라이브서버 CI/CD
 <img alt="img12.png" src="MD.IMG/img12.png"/>
-<img alt="13.png" src="MD.IMG/img13.png"/>
+<img alt="img13.png" src="MD.IMG/img13.png"/>
 
 ### 데브옵스 환경과 클라우드 라이브서버 환경 모니터링 시스템구축
 
